@@ -1,0 +1,29 @@
+macetas de plastico medidas,precios y colores disponibles
+maceta n24,25cm ancho 17cm alto,2400,verde y negro
+maceta n17 modelo 2,17cm ancho 13cm alto,700,celeste azul y verde
+maceta n35,37cm ancho 29.5cm alto,7700,marron claro y blanco
+bol n21,22cm ancho 13 cm alto,1300,verde oscuro,marron claro y negro
+maceta n30,30.5cm ancho 24cm alto,5300,verde oscuro,negro y marron
+maceta n14,14cm ancho 11.5cm alto,700,marron
+maceta n17,18cm ancho 14cm alto,1150,marron y negro
+maceta n19,20cm ancho 16.5cm ato,1500,blanco y marron
+maceta n21,21.5cm anchi 17cm alto,1800,marron claro,negro y verde oscuro
+jardinera facetada,19.5cm largo 10cm ancho 9cm alto,2300
+maceta facetada,12cm largo 12cm ancho 12.5cm alto,1900
+maceta facetada n14,14.5cm ancho 12cm allto,1750
+maceta facetada n16,16cm ancho 13cm alto,2050
+maceta olivia n18,18cm ancho 15 cm alto,3500,gris,marron y verde
+maceta olivia n24,24cm ancho 20cm alto,6200,verde y marron
+jardinera n45,44.5cm largo 16.5cm ancho 12cm alto,4000,marron claro,marron,negro y beige
+jardinera n55,52.5cm largo 18cm ancho 14.5cm alto,6550,marron y beige
+jardinera n65,64cm largo 21cm ancho 17cm alto,11200,beige,blanco y marron
+maceta geometrica n24,22cm ancho 20cm alto ,7100,negro y blanco
+maceta geometrica n15,14.5cm ancho 11.5cm alto,1500,blanco y negro
+macea premium n16,16cm ancho,14cm alto,2600,negro y blanco
+maceta geometrica n29,28cm ancho 24cm alto,10900,gris
+maceta olivia n24,24cm ancho 20cm alto,6500,gris y beige
+maceta premium n27,27cm ancho 24cm alto,10900,blanco
+maceta geometrica n16,14.5cm ancho 13.5cm alto,2700,gris y negro
+maceta geometrica n20,18.5cm ancho 17cm alto,500,negro y gris
+maceta tecurizada n18,18.5cm ancho 18cm alto,3600,gris
+
