@@ -581,7 +581,7 @@ const state = {
 };
 
 const elements = {
-  productsGrid: document.getElementById("products-view"), productsHeading: document.getElementById("products-heading"), modal: document.getElementById("product-modal"), modalImage: document.getElementById("modal-image"), modalPrevImage: document.getElementById("modal-prev-image"), modalNextImage: document.getElementById("modal-next-image"), modalImageDots: document.getElementById("modal-image-dots"), modalTitle: document.getElementById("modal-title"), modalPrice: document.getElementById("modal-price"), measuresGroup: document.getElementById("measures-group"), modalMeasures: document.getElementById("modal-measures"), colorGroup: document.getElementById("color-group"), colorLabel: document.getElementById("color-label"), colorOptions: document.getElementById("color-options"), sizeGroup: document.getElementById("size-group"), sizeSelect: document.getElementById("size-select"), quantityInput: document.getElementById("quantity-input"), addToCartButton: document.getElementById("modal-add-to-cart"), closeModalButton: document.getElementById("modal-close"), cartItems: document.getElementById("cart-items"), cartTotal: document.getElementById("cart-total"), cartCount: document.getElementById("cart-count"), checkoutButton: document.getElementById("checkout-whatsapp"), searchInput: document.getElementById("search-input"), categoryFilters: document.getElementById("category-filters"), materialFilters: document.getElementById("material-filters"), materialButtons: document.querySelectorAll("[data-material]"), plantFilters: document.getElementById("plant-filters"), plantTypeButtons: document.querySelectorAll("[data-plant-type]"), navButtons: document.querySelectorAll("[data-nav-category]"), cartToggle: document.getElementById("cart-toggle"), cartPanel: document.getElementById("cart-panel"), cartSheetHandle: document.getElementById("cart-sheet-handle"), closeCart: document.getElementById("close-cart"), menuToggle: document.getElementById("menu-toggle"), mainNav: document.getElementById("main-nav")
+  productsGrid: document.getElementById("products-view"), productsHeading: document.getElementById("products-heading"), modal: document.getElementById("product-modal"), modalImage: document.getElementById("modal-image"), modalPrevImage: document.getElementById("modal-prev-image"), modalNextImage: document.getElementById("modal-next-image"), modalImageDots: document.getElementById("modal-image-dots"), modalTitle: document.getElementById("modal-title"), modalPrice: document.getElementById("modal-price"), measuresGroup: document.getElementById("measures-group"), modalMeasures: document.getElementById("modal-measures"), colorGroup: document.getElementById("color-group"), colorLabel: document.getElementById("color-label"), colorOptions: document.getElementById("color-options"), sizeGroup: document.getElementById("size-group"), sizeSelect: document.getElementById("size-select"), quantityInput: document.getElementById("quantity-input"), addToCartButton: document.getElementById("modal-add-to-cart"), closeModalButton: document.getElementById("modal-close"), cartItems: document.getElementById("cart-items"), cartTotal: document.getElementById("cart-total"), cartCount: document.getElementById("cart-count"), checkoutButton: document.getElementById("checkout-whatsapp"), searchInput: document.getElementById("search-input"), categoryFilters: document.getElementById("category-filters"), materialFilters: document.getElementById("material-filters"), materialButtons: document.querySelectorAll("[data-material]"), plantFilters: document.getElementById("plant-filters"), plantTypeButtons: document.querySelectorAll("[data-plant-type]"), navButtons: document.querySelectorAll("[data-nav-category]"), cartToggle: document.getElementById("cart-toggle"), cartPanel: document.getElementById("cart-panel"), cartBackdrop: document.getElementById("cart-backdrop"), cartSheetHandle: document.getElementById("cart-sheet-handle"), closeCart: document.getElementById("close-cart"), menuToggle: document.getElementById("menu-toggle"), mainNav: document.getElementById("main-nav")
 };
 function getFilteredProducts() {
   return products.filter((product) => {
@@ -891,6 +891,21 @@ function renderColorOptions(colors) {
     button.addEventListener("click", () => { state.selectedColor = button.getAttribute("data-color"); renderColorOptions(state.selectedProduct.colores); });
   });
 }
+function playAddToCartFeedback(triggerButton = null) {
+  if (triggerButton) {
+    triggerButton.classList.remove("is-added");
+    void triggerButton.offsetWidth;
+    triggerButton.classList.add("is-added");
+    window.setTimeout(() => triggerButton.classList.remove("is-added"), 520);
+  }
+
+  if (elements.cartToggle) {
+    elements.cartToggle.classList.remove("is-bump");
+    void elements.cartToggle.offsetWidth;
+    elements.cartToggle.classList.add("is-bump");
+    window.setTimeout(() => elements.cartToggle.classList.remove("is-bump"), 620);
+  }
+}
 function addSelectedProductToCart() {
   if (!state.selectedProduct || state.selectedProduct.agotado) return;
   if (typeof state.selectedProduct.precio !== "number") { openConsultationOnWhatsApp(state.selectedProduct); closeModal(); return; }
@@ -900,6 +915,7 @@ function addSelectedProductToCart() {
   const existingItem = state.cart.find((item) => item.nombre === state.selectedProduct.nombre && item.tamano === size && item.color === color);
   if (existingItem) existingItem.cantidad += quantity;
   else state.cart.push({ nombre: state.selectedProduct.nombre, precio: state.selectedProduct.precio, cantidad: quantity, tamano: size, color });
+  playAddToCartFeedback(elements.addToCartButton);
   renderCart(); closeModal(); openCartPanel();
 }
 
@@ -927,6 +943,7 @@ function renderCart() {
   elements.cartTotal.textContent = formatPrice(calculateTotal());
   elements.cartPanel.classList.toggle("is-empty", totalItems === 0);
   if (window.innerWidth <= 640 && totalItems === 0) closeCartPanel();
+  syncCartOverlay();
 }
 
 function buildWhatsappMessage() {
@@ -972,8 +989,33 @@ function setActivePlantType(type) {
   elements.plantTypeButtons.forEach((button) => { button.classList.toggle("is-active", button.getAttribute("data-plant-type") === type); });
 }
 
-function openCartPanel() { if (window.innerWidth <= 1250) elements.cartPanel.classList.add("is-open"); }
-function closeCartPanel() { elements.cartPanel.classList.remove("is-open"); }
+function openCartPanel() {
+  if (window.innerWidth <= 640) {
+    elements.cartPanel.classList.remove("is-open");
+    syncCartOverlay();
+    return;
+  }
+  syncCartOverlay();
+}
+function syncCartOverlay() {
+  const isMobile = window.innerWidth <= 640;
+  const isOpen = elements.cartPanel.classList.contains("is-open");
+  const hasItems = state.cart.length > 0;
+  document.body.classList.toggle("cart-open", isMobile && isOpen && hasItems);
+  if (elements.cartBackdrop) {
+    elements.cartBackdrop.classList.toggle("is-open", isMobile && isOpen && hasItems);
+    elements.cartBackdrop.setAttribute("aria-hidden", String(!(isMobile && isOpen && hasItems)));
+  }
+  elements.cartToggle.classList.toggle("is-hidden", isMobile && isOpen && hasItems);
+  document.body.classList.toggle("body-cart-open", isMobile && isOpen && hasItems);
+}
+function closeCartPanel() { elements.cartPanel.classList.remove("is-open"); syncCartOverlay(); }
+function toggleCartPanel(forceOpen = null) {
+  if (window.innerWidth > 640) return;
+  const willOpen = typeof forceOpen === "boolean" ? forceOpen : !elements.cartPanel.classList.contains("is-open");
+  elements.cartPanel.classList.toggle("is-open", willOpen);
+  syncCartOverlay();
+}
 function toggleMobileMenu(forceOpen = null) {
   if (!elements.mainNav || !elements.menuToggle) return;
   const willOpen = typeof forceOpen === "boolean" ? forceOpen : !elements.mainNav.classList.contains("is-open");
@@ -1024,17 +1066,33 @@ function bindEvents() {
   }
   elements.cartToggle.addEventListener("click", () => {
     if (window.innerWidth <= 640 && !state.cart.length) return;
-    elements.cartPanel.classList.toggle("is-open");
+    toggleCartPanel();
   });
   if (elements.cartSheetHandle) {
     elements.cartSheetHandle.addEventListener("click", () => {
       if (!state.cart.length) return;
-      elements.cartPanel.classList.toggle("is-open");
+      toggleCartPanel();
     });
   }
-  elements.closeCart.addEventListener("click", closeCartPanel);
+  if (elements.cartBackdrop) {
+    elements.cartBackdrop.addEventListener("click", closeCartPanel);
+  }
+  elements.closeCart.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    closeCartPanel();
+  });
+  elements.closeCart.addEventListener("touchstart", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    closeCartPanel();
+  }, { passive: false });
   window.addEventListener("resize", () => {
     if (window.innerWidth > 980) toggleMobileMenu(false);
+    if (window.innerWidth > 640) closeCartPanel();
+    syncCartOverlay();
   });
   document.addEventListener("keydown", (event) => { if (event.key === "Escape") { closeModal(); closeCartPanel(); toggleMobileMenu(false); } });
 }

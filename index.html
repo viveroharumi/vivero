@@ -58,12 +58,6 @@
               placeholder="Buscar macetas, jardineras, floreros..."
             />
           </label>
-          <button class="header-icon" type="button" aria-label="Mi cuenta">
-            <svg viewBox="0 0 24 24" role="img" focusable="false">
-              <circle cx="12" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8" />
-              <path d="M5.5 19a6.5 6.5 0 0 1 13 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-            </svg>
-          </button>
           <button class="cart-toggle" id="cart-toggle" aria-label="Abrir carrito">
             <span class="cart-toggle__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" role="img" focusable="false">
@@ -130,30 +124,32 @@
           <div class="catalog-results" id="products-view" aria-live="polite"></div>
         </section>
 
-        <aside class="cart-panel reveal-up" id="cart-panel">
-          <button class="cart-sheet-handle" id="cart-sheet-handle" type="button" aria-label="Abrir carrito"></button>
-          <div class="cart-panel__header">
-            <div>
-              <p class="section-heading__eyebrow">Tu seleccion</p>
-              <h3>Carrito</h3>
-            </div>
-            <button class="icon-button" id="close-cart" aria-label="Cerrar carrito">&times;</button>
-          </div>
-          <div class="cart-items" id="cart-items">
-            <p class="cart-empty">Todavia no agregaste productos.</p>
-          </div>
-          <div class="cart-summary">
-            <div class="cart-summary__row">
-              <span>Total</span>
-              <strong id="cart-total">$0</strong>
-            </div>
-            <button class="primary-button" id="checkout-whatsapp">
-              Comprar por WhatsApp
-            </button>
-          </div>
-        </aside>
       </main>
     </div>
+
+    <div class="cart-backdrop" id="cart-backdrop" aria-hidden="true"></div>
+    <aside class="cart-panel reveal-up" id="cart-panel">
+      <button class="cart-sheet-handle" id="cart-sheet-handle" type="button" aria-label="Abrir carrito"></button>
+      <div class="cart-panel__header">
+        <div>
+          <p class="section-heading__eyebrow">Tu seleccion</p>
+          <h3>Carrito</h3>
+        </div>
+        <button class="icon-button" id="close-cart" aria-label="Cerrar carrito">&times;</button>
+      </div>
+      <div class="cart-items" id="cart-items">
+        <p class="cart-empty">Todavia no agregaste productos.</p>
+      </div>
+      <div class="cart-summary">
+        <div class="cart-summary__row">
+          <span>Total</span>
+          <strong id="cart-total">$0</strong>
+        </div>
+        <button class="primary-button" id="checkout-whatsapp">
+          Comprar por WhatsApp
+        </button>
+      </div>
+    </aside>
 
     <div class="modal-backdrop" id="product-modal" aria-hidden="true">
       <div class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
