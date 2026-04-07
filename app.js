@@ -108,6 +108,8 @@ const DATA_KEY_ALIASES = {
   geraneo: "geranios",
   geraneos: "geranios",
   gazania: "gazana",
+  "pensamientos 2 uidades": "pensamientos",
+  "pensamientos 2 unidades": "pensamientos",
   perlitas: "perlita",
   huertas: "huerta",
   "strelizia reginae": "strelitzia reginae",
@@ -255,7 +257,7 @@ const plantInteriorFiles = [
 ];
 
 const plantExteriorFiles = [
-  "plantas/plantas de exterior/alegria del hogar.jpg", "plantas/plantas de exterior/copetito.jpg", "plantas/plantas de exterior/petunia.jpg", "plantas/plantas de exterior/rayito de sol.jpg", "plantas/plantas de exterior/bignonia/IMG_20260330_183527.jpg", "plantas/plantas de exterior/bignonia/IMG_20260330_183532.jpg", "plantas/plantas de exterior/bignonia/IMG_20260330_183539.jpg", "plantas/plantas de exterior/gazaña/IMG_20260330_183358.jpg", "plantas/plantas de exterior/gazaña/IMG_20260330_183408.jpg", "plantas/plantas de exterior/malvon doble/IMG_20260330_183141.jpg", "plantas/plantas de exterior/malvon doble/malvo.jpg", "plantas/plantas de exterior/pindo/pindo.jpg", "plantas/plantas de exterior/rosa china/IMG_20260330_183854.jpg", "plantas/plantas de exterior/rosa china/IMG_20260330_183907.jpg", "plantas/plantas de exterior/salvia/IMG_20260330_183556.jpg", "plantas/plantas de exterior/salvia/IMG_20260330_183559.jpg", "plantas/suculentas y cactus/cactus/IMG_20260330_182957.jpg", "plantas/suculentas y cactus/cactus/IMG_20260330_183008.jpg", "plantas/suculentas y cactus/cactus/IMG_20260330_183012.jpg", "plantas/suculentas y cactus/IMG_20260330_183025.jpg", "plantas/suculentas y cactus/IMG_20260330_183027.jpg", "plantas/suculentas y cactus/IMG_20260330_183029.jpg"
+  "plantas/plantas de exterior/alegria del hogar.jpg", "plantas/plantas de exterior/copetito.jpg", "plantas/plantas de exterior/petunia.jpg", "plantas/plantas de exterior/rayito de sol.jpg", "plantas/plantas de exterior/bignonia/IMG_20260330_183527.jpg", "plantas/plantas de exterior/bignonia/IMG_20260330_183532.jpg", "plantas/plantas de exterior/bignonia/IMG_20260330_183539.jpg", "plantas/plantas de exterior/gazaña/IMG_20260330_183358.jpg", "plantas/plantas de exterior/gazaña/IMG_20260330_183408.jpg", "plantas/plantas de exterior/malvon doble/IMG_20260330_183141.jpg", "plantas/plantas de exterior/malvon doble/malvo.jpg", "plantas/plantas de exterior/pindo/pindo.jpg", "plantas/plantas de exterior/rosa china/IMG_20260330_183854.jpg", "plantas/plantas de exterior/rosa china/IMG_20260330_183907.jpg", "plantas/plantas de exterior/rosa china/rosa china (3)(6000).jpeg", "plantas/plantas de exterior/rosa china/rosa china(6000).jpeg", "plantas/plantas de exterior/rosa china/rosa china.jpeg", "plantas/plantas de exterior/salvia/IMG_20260330_183556.jpg", "plantas/plantas de exterior/salvia/IMG_20260330_183559.jpg", "plantas/suculentas y cactus/cactus/IMG_20260330_182957.jpg", "plantas/suculentas y cactus/cactus/IMG_20260330_183008.jpg", "plantas/suculentas y cactus/cactus/IMG_20260330_183012.jpg", "plantas/suculentas y cactus/IMG_20260330_183025.jpg", "plantas/suculentas y cactus/IMG_20260330_183027.jpg", "plantas/suculentas y cactus/IMG_20260330_183029.jpg"
 ];
 
 const otherProductFiles = [
@@ -267,7 +269,7 @@ function getPlantFlowerColors(plantName) {
     return [];
   }
   if (normalized === "geranios") return [{ nombre: "Rojo", hex: "#b93d3d" }, { nombre: "Rosa", hex: "#dc8da7" }, { nombre: "Blanco", hex: "#f4f1e8" }];
-  if (normalized === "rosa china") return [{ nombre: "Rojo", hex: "#b63d44" }, { nombre: "Rosa", hex: "#d8889b" }, { nombre: "Naranja", hex: "#d97d48" }];
+  if (normalized === "rosa china") return [{ nombre: "Blanco", hex: "#f4efe7" }, { nombre: "Rosa", hex: "#d8889b" }, { nombre: "Rojo", hex: "#b63d44" }, { nombre: "Amarillo", hex: "#e4be4f" }];
   if (normalized === "violeta de los alpes") return [{ nombre: "Violeta", hex: "#8b68ba" }, { nombre: "Rosa", hex: "#d18aa6" }, { nombre: "Blanco", hex: "#f4f0ea" }];
   if (normalized === "manto de virgen") return [{ nombre: "Blanco", hex: "#f5f2ea" }, { nombre: "Lila suave", hex: "#c7b7df" }];
   if (normalized === "gazana" || normalized === "gazana gigante") return [{ nombre: "Amarillo", hex: "#e4b93d" }, { nombre: "Naranja", hex: "#de8b3e" }];
@@ -284,6 +286,25 @@ function getPlantSectionType(filePath, plantName, defaultType) {
   const lowerPath = filePath.toLowerCase();
   if (lowerPath.includes("suculentas y cactus") || ["cola de burro", "rosario", "suculentas", "cactus"].includes(normalized)) {
     return "suculentas";
+  }
+  if (
+    [
+      "agapantus",
+      "alegria del hogar",
+      "enamorada del muro",
+      "gazana gigante",
+      "geranios",
+      "huerta",
+      "limonero 4 estaciones",
+      "ojo de poeta",
+      "manto de virgen",
+      "pensamientos",
+      "rosa china",
+      "rudas",
+      "violeta de los alpes"
+    ].includes(normalized)
+  ) {
+    return "exterior";
   }
   return defaultType === "exterior" ? "exterior" : "interior";
 }
@@ -429,16 +450,36 @@ if (ojoDePoeta) {
   ojoDePoeta.colores = [{ nombre: "Amarillo", hex: "#e4be4f" }];
 }
 
-const rosaChinaProducts = products.filter((product) => product.nombre === "Rosa China");
-if (rosaChinaProducts[0]) {
-  rosaChinaProducts[0].colores = [
+const rosaChinaProducts = products
+  .map((product, index) => ({ product, index }))
+  .filter(({ product }) => product.nombre === "Rosa China");
+if (rosaChinaProducts.length) {
+  const rosaChinaPrincipal = rosaChinaProducts.find(({ product }) => product.categoria === "exterior") || rosaChinaProducts[0];
+  const rosaChinaImages = Array.from(new Set(
+    rosaChinaProducts
+      .filter(({ product }) => product.categoria === "exterior")
+      .flatMap(({ product }) => product.imagenes)
+  ));
+
+  rosaChinaPrincipal.product.categoria = "exterior";
+  rosaChinaPrincipal.product.seccionPlanta = "exterior";
+  rosaChinaPrincipal.product.precio = 8000;
+  rosaChinaPrincipal.product.agotado = false;
+  rosaChinaPrincipal.product.imagenes = rosaChinaImages.length ? rosaChinaImages : rosaChinaPrincipal.product.imagenes;
+  rosaChinaPrincipal.product.imagen = rosaChinaPrincipal.product.imagenes[0];
+  rosaChinaPrincipal.product.colores = [
+    { nombre: "Amarillo", hex: "#e4be4f" },
     { nombre: "Blanco", hex: "#f4efe7" },
     { nombre: "Rosa", hex: "#d8889b" },
     { nombre: "Rojo", hex: "#b63d44" }
   ];
-}
-if (rosaChinaProducts[rosaChinaProducts.length - 1] && rosaChinaProducts.length > 1) {
-  rosaChinaProducts[rosaChinaProducts.length - 1].colores = [{ nombre: "Amarillo", hex: "#e4be4f" }];
+
+  rosaChinaProducts
+    .filter(({ index }) => index !== rosaChinaPrincipal.index)
+    .sort((a, b) => b.index - a.index)
+    .forEach(({ index }) => {
+      products.splice(index, 1);
+    });
 }
 
 const santaRitaIndex = products.findIndex((product) => product.nombre === "Trepadores Santa Rita");
