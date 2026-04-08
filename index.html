@@ -19,7 +19,7 @@
           class="menu-toggle"
           id="menu-toggle"
           type="button"
-          aria-label="Abrir menu"
+          aria-label="Abrir menú"
           aria-expanded="false"
           aria-controls="main-nav"
         >
@@ -42,7 +42,7 @@
           <button class="nav-pill is-active" type="button" data-nav-category="all">Productos</button>
           <button class="nav-pill" type="button" data-nav-category="macetas">Macetas</button>
           <button class="nav-pill" type="button" data-nav-category="plantas">Plantas</button>
-          <a href="#tips">Tips</a>
+          <button class="nav-pill" type="button" data-nav-category="otros">Productos para jardinería</button>
         </nav>
         <div class="header-actions">
           <label class="searchbar" for="search-input">
@@ -86,12 +86,13 @@
               <button class="chip is-active" data-category="all">Todas</button>
               <button class="chip" data-category="macetas">Macetas</button>
               <button class="chip" data-category="plantas">Plantas</button>
+              <button class="chip" data-category="otros">Productos para jardinería</button>
             </div>
           </section>
           <section class="sidebar-card reveal-up" id="tips">
             <p class="sidebar-card__label">Tips del vivero</p>
             <ul class="tips-list">
-              <li>Rega temprano para cuidar mejor las raices.</li>
+              <li>Regá temprano para cuidar mejor las raíces.</li>
               <li>Rota macetas de interior una vez por semana.</li>
               <li>Usa sustrato aireado para especies sensibles.</li>
             </ul>
@@ -113,7 +114,7 @@
           <div class="material-filters hidden" id="material-filters">
             <button class="material-chip is-active" type="button" data-material="all">Todos los materiales</button>
             <button class="material-chip" type="button" data-material="barro">Barro</button>
-            <button class="material-chip" type="button" data-material="plastico">Plastico</button>
+            <button class="material-chip" type="button" data-material="plastico">Plástico</button>
           </div>
           <div class="material-filters hidden" id="plant-filters">
             <button class="material-chip is-active" type="button" data-plant-type="all">Todas las plantas</button>
@@ -132,13 +133,13 @@
       <button class="cart-sheet-handle" id="cart-sheet-handle" type="button" aria-label="Abrir carrito"></button>
       <div class="cart-panel__header">
         <div>
-          <p class="section-heading__eyebrow">Tu seleccion</p>
+          <p class="section-heading__eyebrow">Tu selección</p>
           <h3>Carrito</h3>
         </div>
         <button class="icon-button" id="close-cart" aria-label="Cerrar carrito">&times;</button>
       </div>
       <div class="cart-items" id="cart-items">
-        <p class="cart-empty">Todavia no agregaste productos.</p>
+        <p class="cart-empty">Todavía no agregaste productos.</p>
       </div>
       <div class="cart-summary">
         <div class="cart-summary__row">

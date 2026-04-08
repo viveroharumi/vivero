@@ -7,6 +7,7 @@ const CSV_PRICE_DATA = {
   "cola de burro": { precio: 8000, agotado: true },
   colgantes: { precio: 8000 },
   "gazana gigante": { precio: 1700, agotado: true },
+  helecho: { precio: 18000 },
   "helecho arroz": { precio: 2000 },
   "limonero 4 estaciones": { precio: 30000 },
   "manto de virgen": { precio: 8000 },
@@ -14,6 +15,10 @@ const CSV_PRICE_DATA = {
   pensamientos: { precio: 4000 },
   rosario: { precio: 8000 },
   rudas: { precio: 1500 },
+  dolar: { precio: 8000 },
+  dracena: { precio: 12000 },
+  "costilla de adan": { precio: 18000 },
+  "palo de agua mediano": { precio: 15000 },
   "trepadores santa rita": { precio: 8000 },
   geranios: { precio: 4000, agotado: true },
   "violeta de los alpes": { precio: 10000 },
@@ -23,11 +28,13 @@ const CSV_PRICE_DATA = {
   huerta: { precio: 3000 },
   gomero: { precio: 50000 },
   ficus: { precio: 23000 },
-  marginata: { precio: 60000 },
+  marginata: { precio: 15000 },
   "potus n14": { precio: 7000 },
   "strelitzia reginae": { precio: 42000 },
   "palo de agua grande": { precio: 70000 },
   "enamorada del muro": { precio: 2500 },
+  aphelandra: { precio: 18000 },
+  "chamaedorea elegans": { precio: 42000 },
   dietes: { precio: 7000 },
   "jazmin kimura cuatro estaciones": { precio: 8000 },
   evonimus: { precio: 5000 },
@@ -44,13 +51,48 @@ const CSV_PRICE_DATA = {
   gazana: { precio: 4000 },
   copetito: { precio: 4000 },
   bignonia: { precio: 8000 },
+  "bignonia naranja": { precio: 7000 },
   "malvon doble": { precio: 4000 },
+  tecoma: { precio: 8000 },
+  "duranta chocolate": { precio: 8000 },
+  "eugenia arbolito": { precio: 40000 },
+  "cesped ingles": { precio: 6000 },
+  solanum: { precio: 8000 },
+  ruelia: { precio: 7000 },
+  "lavanda grande": { precio: 8000 },
+  teucrium: { precio: 7000 },
+  "duranta aurea": { precio: 8000 },
+  "arreglo de suculentas": { precio: 10000 },
+  "potus colgante": { precio: 20000 },
+  "nido de pajaro": { precio: 25000 },
+  "helecho piedra": { precio: 7000 },
+  "begonia dragon": { precio: 5000 },
+  "marginata grande": { precio: 50000 },
+  penisetum: { precio: 7000 },
+  dimorfoteca: { precio: 2500 },
+  "laurel de jardin por cerco": { precio: 7000 },
+  "mala madre": { precio: 10000 },
+  "potus con tutor": { precio: 23000 },
+  rubra: { precio: 26000 },
+  raphi: { precio: 60000 },
+  "calathea macuyana": { precio: 30000 },
+  "gomero variegado": { precio: 33000 },
+  sansevieria: { precio: 9000 },
+  dieffenbachia: { precio: 20000 },
+  "dieffencachia tropic": { precio: 20000 },
+  philodendron: { precio: 30000 },
+  budleja: { precio: 7000 },
+  "salvia gregi": { precio: 7000 },
   "tierra abonada": { precio: 5000 },
   humus: { precio: 7000 },
   turba: { precio: 2000 },
   perlita: { precio: 2000 },
   "alquimia natural vamp": { precio: 7700 },
   "melaza blackstrap": { precio: 6700 },
+  "bebedero de pajaros": { precio: 24000 },
+  "cesped de invierno": { precio: 11000 },
+  "colgante decoracion pajaro": { precio: 21000 },
+  "colgante mariquita": { precio: 21000 },
   "flora booster": { precio: 6900 },
   "top crop top veg": { precio: 7900 },
   "mosca blanca": { precio: 5600 },
@@ -105,9 +147,15 @@ const CSV_PRICE_DATA = {
 };
 
 const DATA_KEY_ALIASES = {
+  buddleja: "budleja",
   geraneo: "geranios",
   geraneos: "geranios",
   gazania: "gazana",
+  salvia: "salvia de jardin",
+  sanseviera: "sansevieria",
+  philopendron: "philodendron",
+  "dieffenbachia tropic": "dieffencachia tropic",
+  "salvia greggii": "salvia gregi",
   "pensamientos 2 uidades": "pensamientos",
   "pensamientos 2 unidades": "pensamientos",
   perlitas: "perlita",
@@ -123,9 +171,11 @@ const DATA_KEY_ALIASES = {
 };
 
 const DISPLAY_NAME_OVERRIDES = {
+  budleja: "Buddleja",
   geranios: "Geraneo",
   "gazana gigante": "Gazania gigante",
   gazana: "Gazania",
+  "salvia gregi": "Salvia greggii",
   "dieffencachia tropic": "Dieffenbachia Tropic",
   "ficus benghanlensis": "Ficus benghalensis",
   "strelitzia reginae": "Strelitzia reginae",
@@ -253,7 +303,7 @@ const products = [
 ];
 
 const plantInteriorFiles = [
-  "plantas/plantas de interior/agapantus(6000).jpeg", "plantas/plantas de interior/aromaticas(1500).jpeg", "plantas/plantas de interior/cola de burro(7000).jpeg", "plantas/plantas de interior/colgantes(7000).jpeg", "plantas/plantas de interior/gazaña gigante(1700).jpeg", "plantas/plantas de interior/helecho arroz(2000).jpeg", "plantas/plantas de interior/limonero 4 estaciones(23000).jpeg", "plantas/plantas de interior/manto de virgen(3000).jpeg", "plantas/plantas de interior/manto de virgen(7000).jpeg", "plantas/plantas de interior/ojo de poeta(6000).jpeg", "plantas/plantas de interior/pensamientos 2 uidades(3000).jpeg", "plantas/plantas de interior/rosario(7000).jpeg", "plantas/plantas de interior/rudas(1500).jpeg", "plantas/plantas de interior/strelizia reginae(35000).jpeg", "plantas/plantas de interior/trepadores santa rita(6000).jpeg", "plantas/plantas de interior/alegria del hogar/WhatsApp Image 2026-03-30 at 16.26.57.jpeg", "plantas/plantas de interior/alegria del hogar/WhatsApp Image 2026-03-30 at 16.27.03.jpeg", "plantas/plantas de interior/aphelandra/IMG_20260330_152313.jpg", "plantas/plantas de interior/aphelandra/IMG_20260330_152317.jpg", "plantas/plantas de interior/begonia/1000090425.jpg", "plantas/plantas de interior/begonia/IMG_20260330_151747.jpg", "plantas/plantas de interior/begonia/IMG_20260330_151753.jpg", "plantas/plantas de interior/chamaedorea elegans/IMG_20260330_152928.jpg", "plantas/plantas de interior/chamaedorea elegans/IMG_20260330_152932.jpg", "plantas/plantas de interior/costilla de adan/costilla de adan.jpg", "plantas/plantas de interior/costilla de adan/IMG_20260330_152047.jpg", "plantas/plantas de interior/dieffenbachia/IMG_20260330_152943.jpg", "plantas/plantas de interior/dieffenbachia/IMG_20260330_152945.jpg", "plantas/plantas de interior/dieffencachia tropic/IMG_20260330_153002.jpg", "plantas/plantas de interior/dieffencachia tropic/IMG_20260330_153006.jpg", "plantas/plantas de interior/dolar/IMG_20260330_153436.jpg", "plantas/plantas de interior/dolar/IMG_20260330_153440.jpg", "plantas/plantas de interior/dracena/IMG_20260330_152911.jpg", "plantas/plantas de interior/dracena/IMG_20260330_152915.jpg", "plantas/plantas de interior/enamorada del muro/WhatsApp Image 2026-03-30 at 16.26.08.jpeg", "plantas/plantas de interior/ficus/IMG_20260330_152517.jpg", "plantas/plantas de interior/ficus/IMG_20260330_152549.jpg", "plantas/plantas de interior/ficus benghanlensis/IMG_20260330_152656.jpg", "plantas/plantas de interior/ficus benghanlensis/IMG_20260330_152702.jpg", "plantas/plantas de interior/geraneos/geraneos(3000).jpeg", "plantas/plantas de interior/geraneos/geraneos(3000)2.jpeg", "plantas/plantas de interior/geraneos/geraneos(3000)3.jpeg", "plantas/plantas de interior/gomero/IMG_20260330_152442.jpg", "plantas/plantas de interior/gomero/IMG_20260330_152448.jpg", "plantas/plantas de interior/gomero variegado/gomero(33000).jpeg", "plantas/plantas de interior/gomero variegado/gomero(33000)2.jpeg", "plantas/plantas de interior/helecho/1000090427.jpg", "plantas/plantas de interior/helecho/IMG_20260330_151824.jpg", "plantas/plantas de interior/helecho/IMG_20260330_151828.jpg", "plantas/plantas de interior/helecho asplenium nidus/IMG_20260330_152413.jpg", "plantas/plantas de interior/helecho asplenium nidus/IMG_20260330_152417.jpg", "plantas/plantas de interior/huertas/huerta(2500).jpeg", "plantas/plantas de interior/huertas/huerta(2500)2.jpeg", "plantas/plantas de interior/marginata/IMG_20260330_152748.jpg", "plantas/plantas de interior/marginata/IMG_20260330_152816.jpg", "plantas/plantas de interior/palo de agua grande/IMG_20260330_152102.jpg", "plantas/plantas de interior/palo de agua grande/IMG_20260330_152104.jpg", "plantas/plantas de interior/palo de agua grande/IMG_20260330_152109.jpg", "plantas/plantas de interior/palo de agua mediano/IMG_20260330_151656.jpg", "plantas/plantas de interior/palo de agua mediano/IMG_20260330_151702.jpg", "plantas/plantas de interior/philodendron/IMG_20260330_153415.jpg", "plantas/plantas de interior/philodendron/IMG_20260330_153425.jpg", "plantas/plantas de interior/potus n14/IMG_20260330_152247.jpg", "plantas/plantas de interior/potus n14/IMG_20260330_152251.jpg", "plantas/plantas de interior/rosa china/rosa china (2)(6000).jpeg", "plantas/plantas de interior/rosa china/rosa china (3)(6000).jpeg", "plantas/plantas de interior/rosa china/rosa china(6000).jpeg", "plantas/plantas de interior/Sansevieria/1000090420.jpg", "plantas/plantas de interior/Sansevieria/1000090421.jpg", "plantas/plantas de interior/Sansevieria/1000090422.jpg", "plantas/plantas de interior/Sansevieria/IMG_20260330_151449.jpg", "plantas/plantas de interior/Sansevieria/IMG_20260330_151502.jpg", "plantas/plantas de interior/Sansevieria/IMG_20260330_151535.jpg", "plantas/plantas de interior/Sansevieria/IMG_20260330_152226.jpg", "plantas/plantas de interior/Sansevieria/IMG_20260330_152230.jpg", "plantas/plantas de interior/strelizia reginae/IMG_20260330_152141.jpg", "plantas/plantas de interior/strelizia reginae/IMG_20260330_152145.jpg", "plantas/plantas de interior/suculentas/suculentas(4000).jpeg", "plantas/plantas de interior/violeta de los alpes/violeta de los alpes (2).jpeg", "plantas/plantas de interior/violeta de los alpes/violeta de los alpes(7000).jpeg", "plantas/plantas de interior/violeta de los alpes/violeta de los alpes(7000)2.jpeg", "plantas/plantas de interior/violeta de los alpes/violeta de los alpes.jpeg"
+  "plantas/plantas de interior/agapantus(6000).jpeg", "plantas/plantas de interior/aromaticas(1500).jpeg", "plantas/plantas de interior/cola de burro(7000).jpeg", "plantas/plantas de interior/colgantes(7000).jpeg", "plantas/plantas de interior/gazaña gigante(1700).jpeg", "plantas/plantas de interior/helecho arroz(2000).jpeg", "plantas/plantas de interior/limonero 4 estaciones(23000).jpeg", "plantas/plantas de interior/manto de virgen(3000).jpeg", "plantas/plantas de interior/manto de virgen(7000).jpeg", "plantas/plantas de interior/ojo de poeta(6000).jpeg", "plantas/plantas de interior/pensamientos 2 uidades(3000).jpeg", "plantas/plantas de interior/rosario(7000).jpeg", "plantas/plantas de interior/rudas(1500).jpeg", "plantas/plantas de interior/strelizia reginae(35000).jpeg", "plantas/plantas de interior/trepadores santa rita(6000).jpeg", "plantas/plantas de interior/alegria del hogar/WhatsApp Image 2026-03-30 at 16.26.57.jpeg", "plantas/plantas de interior/alegria del hogar/WhatsApp Image 2026-03-30 at 16.27.03.jpeg", "plantas/plantas de interior/aphelandra/IMG_20260330_152313.jpg", "plantas/plantas de interior/aphelandra/IMG_20260330_152317.jpg", "plantas/plantas de interior/begonia/1000090425.jpg", "plantas/plantas de interior/begonia/IMG_20260330_151747.jpg", "plantas/plantas de interior/begonia/IMG_20260330_151753.jpg", "plantas/plantas de interior/chamaedorea elegans/IMG_20260330_152928.jpg", "plantas/plantas de interior/chamaedorea elegans/IMG_20260330_152932.jpg", "plantas/plantas de interior/costilla de adan/costilla de adan.jpg", "plantas/plantas de interior/costilla de adan/IMG_20260330_152047.jpg", "plantas/plantas de interior/dieffenbachia/IMG_20260330_152943.jpg", "plantas/plantas de interior/dieffenbachia/IMG_20260330_152945.jpg", "plantas/plantas de interior/dieffencachia tropic/IMG_20260330_153002.jpg", "plantas/plantas de interior/dieffencachia tropic/IMG_20260330_153006.jpg", "plantas/plantas de interior/dolar/IMG_20260330_153436.jpg", "plantas/plantas de interior/dolar/IMG_20260330_153440.jpg", "plantas/plantas de interior/dracena/IMG_20260330_152911.jpg", "plantas/plantas de interior/dracena/IMG_20260330_152915.jpg", "plantas/plantas de interior/enamorada del muro/WhatsApp Image 2026-03-30 at 16.26.08.jpeg", "plantas/plantas de interior/ficus/IMG_20260330_152517.jpg", "plantas/plantas de interior/ficus/IMG_20260330_152549.jpg", "plantas/plantas de interior/ficus benghanlensis/IMG_20260330_152656.jpg", "plantas/plantas de interior/ficus benghanlensis/IMG_20260330_152702.jpg", "plantas/plantas de interior/geraneos/geraneos(3000).jpeg", "plantas/plantas de interior/geraneos/geraneos(3000)2.jpeg", "plantas/plantas de interior/geraneos/geraneos(3000)3.jpeg", "plantas/plantas de interior/gomero/IMG_20260330_152442.jpg", "plantas/plantas de interior/gomero/IMG_20260330_152448.jpg", "plantas/plantas de interior/gomero variegado/gomero(33000).jpeg", "plantas/plantas de interior/gomero variegado/gomero(33000)2.jpeg", "plantas/plantas de interior/helecho/1000090427.jpg", "plantas/plantas de interior/helecho/IMG_20260330_151824.jpg", "plantas/plantas de interior/helecho/IMG_20260330_151828.jpg", "plantas/plantas de interior/helecho asplenium nidus/IMG_20260330_152413.jpg", "plantas/plantas de interior/helecho asplenium nidus/IMG_20260330_152417.jpg", "plantas/plantas de interior/huertas/huerta(2500).jpeg", "plantas/plantas de interior/huertas/huerta(2500)2.jpeg", "plantas/plantas de interior/marginata/IMG_20260330_152748.jpg", "plantas/plantas de interior/marginata/IMG_20260330_152816.jpg", "plantas/plantas de interior/palo de agua grande/IMG_20260330_152102.jpg", "plantas/plantas de interior/palo de agua grande/IMG_20260330_152104.jpg", "plantas/plantas de interior/palo de agua grande/IMG_20260330_152109.jpg", "plantas/plantas de interior/palo de agua mediano/IMG_20260330_151656.jpg", "plantas/plantas de interior/palo de agua mediano/IMG_20260330_151702.jpg", "plantas/plantas de interior/philodendron/IMG_20260330_153415.jpg", "plantas/plantas de interior/philodendron/IMG_20260330_153425.jpg", "plantas/plantas de interior/potus n14/IMG_20260330_152247.jpg", "plantas/plantas de interior/potus n14/IMG_20260330_152251.jpg", "plantas/plantas de interior/rosa china/rosa china (2)(6000).jpeg", "plantas/plantas de interior/rosa china/rosa china (3)(6000).jpeg", "plantas/plantas de interior/rosa china/rosa china(6000).jpeg", "plantas/plantas de interior/strelizia reginae/IMG_20260330_152141.jpg", "plantas/plantas de interior/strelizia reginae/IMG_20260330_152145.jpg", "plantas/plantas de interior/suculentas/suculentas(4000).jpeg", "plantas/plantas de interior/violeta de los alpes/violeta de los alpes (2).jpeg", "plantas/plantas de interior/violeta de los alpes/violeta de los alpes(7000).jpeg", "plantas/plantas de interior/violeta de los alpes/violeta de los alpes(7000)2.jpeg", "plantas/plantas de interior/violeta de los alpes/violeta de los alpes.jpeg"
 ];
 
 const plantExteriorFiles = [
@@ -261,8 +311,118 @@ const plantExteriorFiles = [
 ];
 
 const otherProductFiles = [
-  "otros productos/aceite grhesa ec cochinilla.jpeg", "otros productos/alquimia natural vamp.jpeg", "otros productos/fertifox activador de la floracion.jpeg", "otros productos/fertifox activador del follaje.jpeg", "otros productos/flora booster.jpeg", "otros productos/glacoxan ciper insecticida.jpeg", "otros productos/glacoxan dsist acaricida.jpeg", "otros productos/glacoxan e hormiguicida.jpeg", "otros productos/hormona en polvo japor fertil.jpeg", "otros productos/humus.jpeg", "otros productos/jabon potasico.jpeg", "otros productos/mamboreta hongos.jpeg", "otros productos/melaza blackstrap.jpeg", "otros productos/mosca blanca.jpeg", "otros productos/myrmec caracoles.jpeg", "otros productos/myrmec hormiga.jpeg", "otros productos/nitrofull.jpeg", "otros productos/polvo bordeles fungicida.jpeg", "otros productos/senderil herbicida total.jpeg", "otros productos/tierra abonada.jpeg", "otros productos/top crop top veg.jpeg", "otros productos/turba.jpeg", "otros productos/veneno hormiguicidainsecticida.jpeg", "otros productos/atrapasoles(9000)/WhatsApp Image 2026-03-29 at 18.27.34 (1).jpeg", "otros productos/cebo para hormigas(2300)/WhatsApp Image 2026-03-29 at 18.27.34 (12).jpeg", "otros productos/colgantes(6000)/WhatsApp Image 2026-03-29 at 18.27.34.jpeg", "otros productos/hortal liquido(6500)/WhatsApp Image 2026-03-29 at 18.27.34 (21).jpeg", "otros productos/perlitas/perlitas.jpeg", "otros productos/perlitas/perlitas (2).jpeg", "otros productos/rastrillo metal(7100)/WhatsApp Image 2026-03-29 at 18.27.34 (14).jpeg"
+  "otros productos/aceite grhesa ec cochinilla.jpeg",
+  "otros productos/alquimia natural vamp.jpeg",
+  "otros productos/fertifox activador de la floracion.jpeg",
+  "otros productos/fertifox activador del follaje.jpeg",
+  "otros productos/flora booster.jpeg",
+  "otros productos/glacoxan ciper insecticida.jpeg",
+  "otros productos/glacoxan dsist acaricida.jpeg",
+  "otros productos/glacoxan e hormiguicida.jpeg",
+  "otros productos/hormona en polvo japor fertil.jpeg",
+  "otros productos/humus.jpeg",
+  "otros productos/jabon potasico.jpeg",
+  "otros productos/mamboreta hongos.jpeg",
+  "otros productos/melaza blackstrap.jpeg",
+  "otros productos/mosca blanca.jpeg",
+  "otros productos/myrmec caracoles.jpeg",
+  "otros productos/myrmec hormiga.jpeg",
+  "otros productos/nitrofull.jpeg",
+  "otros productos/polvo bordeles fungicida.jpeg",
+  "otros productos/senderil herbicida total.jpeg",
+  "otros productos/tierra abonada.jpeg",
+  "otros productos/top crop top veg.jpeg",
+  "otros productos/turba.jpeg",
+  "otros productos/veneno hormiguicidainsecticida.jpeg",
+  "otros productos/atrapasoles(9000)/WhatsApp Image 2026-03-29 at 18.27.34 (1).jpeg",
+  "otros productos/bebedero de pajaros/WhatsApp Image 2026-04-08 at 17.03.22.jpeg",
+  "otros productos/budas/WhatsApp Image 2026-03-29 at 18.27.34 (13).jpeg",
+  "otros productos/budas/WhatsApp Image 2026-03-29 at 18.27.34 (15).jpeg",
+  "otros productos/budas/WhatsApp Image 2026-03-29 at 18.27.34 (17).jpeg",
+  "otros productos/cebo para hormigas(2300)/WhatsApp Image 2026-03-29 at 18.27.34 (12).jpeg",
+  "otros productos/cesped de invierno/WhatsApp Image 2026-04-08 at 16.59.46.jpeg",
+  "otros productos/colgante decoracion pajaro/WhatsApp Image 2026-04-08 at 17.03.51.jpeg",
+  "otros productos/colgante mariquita/WhatsApp Image 2026-04-08 at 17.02.47.jpeg",
+  "otros productos/colgantes(6000)/WhatsApp Image 2026-03-29 at 18.27.34.jpeg",
+  "otros productos/hortal liquido(6500)/WhatsApp Image 2026-03-29 at 18.27.34 (21).jpeg",
+  "otros productos/perlitas/perlitas.jpeg",
+  "otros productos/perlitas/perlitas (2).jpeg",
+  "otros productos/rastrillo metal(7100)/WhatsApp Image 2026-03-29 at 18.27.34 (14).jpeg"
 ];
+
+plantExteriorFiles.push(
+  "plantas/plantas de exterior/arreglo de suculentas/WhatsApp Image 2026-04-08 at 16.33.58.jpeg",
+  "plantas/plantas de exterior/arreglo de suculentas/WhatsApp Image 2026-04-08 at 16.33.59.jpeg",
+  "plantas/plantas de exterior/bignonia naranja/WhatsApp Image 2026-04-08 at 17.13.17.jpeg",
+  "plantas/plantas de exterior/bignonia naranja/WhatsApp Image 2026-04-08 at 17.13.18.jpeg",
+  "plantas/plantas de exterior/budleja/WhatsApp Image 2026-04-08 at 16.55.12.jpeg",
+  "plantas/plantas de exterior/cesped ingles/WhatsApp Image 2026-04-08 at 16.27.53.jpeg",
+  "plantas/plantas de exterior/dietes/WhatsApp Image 2026-04-08 at 16.31.51.jpeg",
+  "plantas/plantas de exterior/dimorfoteca/WhatsApp Image 2026-04-08 at 16.46.16 (1).jpeg",
+  "plantas/plantas de exterior/dimorfoteca/WhatsApp Image 2026-04-08 at 16.46.16 (2).jpeg",
+  "plantas/plantas de exterior/dimorfoteca/WhatsApp Image 2026-04-08 at 16.46.16.jpeg",
+  "plantas/plantas de exterior/dracena/WhatsApp Image 2026-04-08 at 16.29.50.jpeg",
+  "plantas/plantas de exterior/dracena/WhatsApp Image 2026-04-08 at 16.29.51.jpeg",
+  "plantas/plantas de exterior/duranta aurea/WhatsApp Image 2026-04-08 at 16.33.01.jpeg",
+  "plantas/plantas de exterior/duranta aurea/WhatsApp Image 2026-04-08 at 16.33.02.jpeg",
+  "plantas/plantas de exterior/duranta chocolate/WhatsApp Image 2026-04-08 at 16.20.45.jpeg",
+  "plantas/plantas de exterior/duranta chocolate/WhatsApp Image 2026-04-08 at 16.20.46.jpeg",
+  "plantas/plantas de exterior/eugenia arbolito/WhatsApp Image 2026-04-08 at 16.27.01.jpeg",
+  "plantas/plantas de exterior/eugenia arbolito/WhatsApp Image 2026-04-08 at 16.27.02.jpeg",
+  "plantas/plantas de exterior/evonimus/WhatsApp Image 2026-04-08 at 16.21.25.jpeg",
+  "plantas/plantas de exterior/evonimus/WhatsApp Image 2026-04-08 at 16.26.07.jpeg",
+  "plantas/plantas de exterior/jazmin de leche/WhatsApp Image 2026-04-08 at 16.24.17.jpeg",
+  "plantas/plantas de exterior/laurel de jardin por cerco/WhatsApp Image 2026-04-08 at 16.46.50.jpeg",
+  "plantas/plantas de exterior/lavanda grande/WhatsApp Image 2026-04-08 at 16.31.12.jpeg",
+  "plantas/plantas de exterior/melaleuca/WhatsApp Image 2026-04-08 at 16.48.48.jpeg",
+  "plantas/plantas de exterior/melaleuca/WhatsApp Image 2026-04-08 at 16.48.49.jpeg",
+  "plantas/plantas de exterior/penisetum/WhatsApp Image 2026-04-08 at 16.44.46.jpeg",
+  "plantas/plantas de exterior/penisetum/WhatsApp Image 2026-04-08 at 16.45.15.jpeg",
+  "plantas/plantas de exterior/penisetum/WhatsApp Image 2026-04-08 at 7.jpeg",
+  "plantas/plantas de exterior/ruelia/WhatsApp Image 2026-04-08 at 16.30.51.jpeg",
+  "plantas/plantas de exterior/ruelia/WhatsApp Image 2026-04-08 at 16.30.52.jpeg",
+  "plantas/plantas de exterior/salvia gregi/WhatsApp Image 2026-04-08 at 16.56.08.jpeg",
+  "plantas/plantas de exterior/salvia gregi/WhatsApp Image 2026-04-08 at 16.56.081.jpeg",
+  "plantas/plantas de exterior/solanum/WhatsApp Image 2026-04-08 at 16.28.30.jpeg",
+  "plantas/plantas de exterior/solanum/WhatsApp Image 2026-04-08 at 16.28.39.jpeg",
+  "plantas/plantas de exterior/tecoma/WhatsApp Image 2026-04-08 at 16.19.23.jpeg",
+  "plantas/plantas de exterior/tecoma/WhatsApp Image 2026-04-08 at 16.19.24.jpeg",
+  "plantas/plantas de exterior/teucrium/WhatsApp Image 2026-04-08 at 16.32.32.jpeg",
+  "plantas/plantas de exterior/teucrium/WhatsApp Image 2026-04-08 at 16.32.35.jpeg"
+);
+
+plantInteriorFiles.push(
+  "plantas/plantas de interior/begonia dragon/WhatsApp Image 2026-04-08 at 16.40.25.jpeg",
+  "plantas/plantas de interior/begonia dragon/WhatsApp Image 2026-04-08 at 16.40.26.jpeg",
+  "plantas/plantas de interior/calathea macuyana/WhatsApp Image 2026-04-08 at 16.53.33.jpeg",
+  "plantas/plantas de interior/calathea macuyana/WhatsApp Image 2026-04-08 at 16.53.34.jpeg",
+  "plantas/plantas de interior/costilla de adan/WhatsApp Image 2026-04-08 at 16.38.37.jpeg",
+  "plantas/plantas de interior/costilla de adan/WhatsApp Image 2026-04-08 at 16.38.38.jpeg",
+  "plantas/plantas de interior/dolar/WhatsApp Image 2026-04-08 at 16.51.51.jpeg",
+  "plantas/plantas de interior/gomero variegado/WhatsApp Image 2026-04-08 at 16.54.32.jpeg",
+  "plantas/plantas de interior/gomero variegado/WhatsApp Image 2026-04-08 at 16.54.33.jpeg",
+  "plantas/plantas de interior/helecho piedra/WhatsApp Image 2026-04-08 at 16.39.58.jpeg",
+  "plantas/plantas de interior/helecho piedra/WhatsApp Image 2026-04-08 at 16.39.59.jpeg",
+  "plantas/plantas de interior/mala madre/WhatsApp Image 2026-04-08 at 16.49.51.jpeg",
+  "plantas/plantas de interior/mala madre/WhatsApp Image 2026-04-08 at 16.50.04.jpeg",
+  "plantas/plantas de interior/marginata/WhatsApp Image 2026-04-08 at 16.41.19.jpeg",
+  "plantas/plantas de interior/marginata grande/WhatsApp Image 2026-04-08 at 16.42.29.jpeg",
+  "plantas/plantas de interior/nido de pajaro/WhatsApp Image 2026-04-08 at 16.39.13.jpeg",
+  "plantas/plantas de interior/palo de agua mediano/WhatsApp Image 2026-04-08 at 16.38.38.jpeg",
+  "plantas/plantas de interior/palo de agua mediano/WhatsApp Image 2026-04-08 at 16.38.39.jpeg",
+  "plantas/plantas de interior/potus colgante/WhatsApp Image 2026-04-08 at 16.35.40.jpeg",
+  "plantas/plantas de interior/potus colgante/WhatsApp Image 2026-04-08 at 16.35.41.jpeg",
+  "plantas/plantas de interior/potus con tutor/WhatsApp Image 2026-04-08 at 16.50.34.jpeg",
+  "plantas/plantas de interior/potus con tutor/WhatsApp Image 2026-04-08 at 16.50.35.jpeg",
+  "plantas/plantas de interior/raphi/WhatsApp Image 2026-04-08 at 16.52.50.jpeg",
+  "plantas/plantas de interior/rubra/WhatsApp Image 2026-04-08 at 16.51.19.jpeg",
+  "plantas/plantas de interior/sanseviera/1000090420.jpg",
+  "plantas/plantas de interior/sanseviera/1000090421.jpg",
+  "plantas/plantas de interior/sanseviera/1000090422.jpg",
+  "plantas/plantas de interior/sanseviera/WhatsApp Image 2026-04-08 at 16.43.50.jpeg",
+  "plantas/plantas de interior/sanseviera/WhatsApp Image 2026-04-08 at 16.43.51.jpeg"
+);
+
 function getPlantFlowerColors(plantName) {
   const normalized = resolveDataKey(plantName);
   if (["agapantus", "aromaticas", "cola de burro", "colgantes", "rosario", "rudas", "limonero 4 estaciones", "huerta", "gomero", "ficus", "marginata", "potus n14", "strelitzia reginae", "palo de agua grande", "palo de agua mediano", "sansevieria", "cactus", "suculentas"].includes(normalized)) {
@@ -277,6 +437,14 @@ function getPlantFlowerColors(plantName) {
   if (["petunia", "copetito", "malvon doble"].includes(normalized)) return [{ nombre: "Violeta", hex: "#8b68ba" }, { nombre: "Naranja", hex: "#d97d48" }, { nombre: "Amarillo", hex: "#e4be4f" }];
   if (["rayito de sol", "lantana"].includes(normalized)) return [{ nombre: "Amarillo", hex: "#e4be4f" }, { nombre: "Naranja", hex: "#d97d48" }];
   if (normalized === "salvia de jardin") return [{ nombre: "Rojo", hex: "#bb4b4b" }, { nombre: "Fucsia", hex: "#c2447d" }];
+  if (normalized === "bignonia naranja") return [{ nombre: "Naranja", hex: "#d97d48" }];
+  if (normalized === "budleja") return [{ nombre: "Fucsia", hex: "#c2447d" }];
+  if (normalized === "dimorfoteca") return [{ nombre: "Blanco", hex: "#f4efe7" }];
+  if (normalized === "ruelia") return [{ nombre: "Violeta", hex: "#8b68ba" }];
+  if (normalized === "salvia gregi") return [{ nombre: "Rojo", hex: "#bb4b4b" }];
+  if (normalized === "solanum") return [{ nombre: "Violeta", hex: "#6f5bc6" }];
+  if (normalized === "tecoma") return [{ nombre: "Amarillo", hex: "#e4be4f" }];
+  if (normalized === "begonia dragon") return [{ nombre: "Rosa", hex: "#d8889b" }, { nombre: "Rojo", hex: "#b84a59" }];
   if (["trepadores santa rita", "bignonia", "ojo de poeta"].includes(normalized)) return [{ nombre: "Fucsia", hex: "#c2447d" }, { nombre: "Violeta", hex: "#8e69c5" }, { nombre: "Naranja", hex: "#dc8c43" }];
   return [];
 }
@@ -290,6 +458,7 @@ function getPlantSectionType(filePath, plantName, defaultType) {
   if (
     [
       "agapantus",
+      "aromaticas",
       "alegria del hogar",
       "enamorada del muro",
       "gazana gigante",
@@ -316,46 +485,74 @@ function getPlantDescription(plantName) {
   if (normalized === "alegria del hogar") return "Aporta flor continua en media sombra y da un toque alegre a galerias y macetas.";
   if (normalized === "aphelandra") return "Follaje vistoso y tropical, luce mejor con buena luz natural sin sol directo.";
   if (normalized === "begonia") return "Muy decorativa por su hoja y su flor, ideal para espacios frescos y bien resguardados.";
+  if (normalized === "begonia dragon") return "Begonia ornamental de flor vistosa, ideal para dar color suave en rincones luminosos y protegidos.";
   if (normalized === "bignonia") return "Trepadora muy noble para muros y cercos con una floracion que resalta rapido.";
+  if (normalized === "bignonia naranja") return "Trepadora ornamental de flor naranja intensa, muy linda para cercos, muros y exteriores con sol.";
+  if (normalized === "budleja") return "Arbusto ornamental de floracion abundante que atrae mariposas, ideal para sumar color y movimiento al jardin.";
   if (normalized === "buxus") return "Arbusto estructural para borduras y composiciones ordenadas en exterior.";
+  if (normalized === "calathea macuyana") return "Follaje decorativo y elegante, ideal para interior luminoso sin sol directo.";
   if (normalized === "cactus") return "Cactus de bajo mantenimiento para espacios luminosos y riegos espaciados.";
+  if (normalized === "cesped ingles") return "Cubresuelo clasico y prolijo para sumar verde parejo en sectores abiertos del jardin.";
   if (normalized === "chamaedorea elegans") return "Palmera de interior serena y de crecimiento amable, perfecta para ambientes tranquilos.";
   if (normalized === "copetito") return "Flor compacta y rendidora para macetas exteriores y canteros de temporada.";
   if (normalized === "costilla de adan") return "Hoja amplia y ornamental para interiores luminosos, con un crecimiento muy agradecido.";
   if (normalized === "dietes") return "Planta de exterior resistente y elegante, muy buena para patios soleados.";
   if (normalized === "dieffenbachia" || normalized === "dieffencachia tropic") return "Follaje generoso y facil de destacar en interior, con riego moderado y buena claridad.";
+  if (normalized === "dimorfoteca") return "Flor alegre y rendidora para canteros y macetas, muy vistosa en exterior con buena luz.";
   if (normalized === "dolar") return "Planta colgante de crecimiento suelto, muy linda para estantes y apoyos altos.";
   if (normalized === "dracena" || normalized === "marginata") return "Resistente y estilizada, funciona muy bien para dar altura en interiores amplios.";
+  if (normalized === "duranta aurea") return "Arbusto de follaje luminoso, muy decorativo para cercos bajos, canteros y jardines soleados.";
+  if (normalized === "duranta chocolate") return "Follaje oscuro y ornamental para contrastes de jardin, con presencia elegante y resistente.";
   if (normalized === "enamorada del muro") return "Cubre rapido y con buena gracia muros, cercos y rincones con apoyo para trepar.";
+  if (normalized === "eugenia arbolito") return "Arbolito ornamental de follaje prolijo, ideal para entradas, macetones y jardines ordenados.";
   if (normalized === "evonimus" || normalized === "evonimus amarillo") return "Arbusto de exterior de buena estructura para cercos, macetones y entradas.";
   if (normalized === "ficus" || normalized === "ficus benghanlensis") return "Follaje firme y brillante, ideal para sumar estructura verde en interiores luminosos.";
   if (normalized === "gazana" || normalized === "gazana gigante") return "Flor muy rendidora para sol pleno, con colores vivos y mantenimiento simple.";
   if (normalized === "geranios") return "Planta florifera y noble para balcones soleados, de cuidado sencillo y continuo.";
+  if (normalized === "gomero variegado") return "Variedad de interior de gran presencia, con hojas jaspeadas muy decorativas y buena estructura.";
   if (normalized === "gomero") return "Follaje firme y de gran presencia, perfecto para interiores luminosos.";
   if (normalized === "helecho arroz") return "Textura liviana y delicada, muy linda para macetas chicas y rincones frescos.";
   if (normalized === "helecho" || normalized === "helecho asplenium nidus") return "Clasico verde de media sombra, aporta frescura y volumen con riego parejo.";
+  if (normalized === "helecho piedra") return "Follaje fresco y de aspecto natural, ideal para interiores humedos o sectores bien resguardados.";
   if (normalized === "huerta") return "Ideal para empezar una huerta simple en casa con cosecha cercana y practica.";
+  if (normalized === "jazmin de leche") return "Trepadora muy noble para cercos y rejas, con follaje prolijo y presencia clasica en exterior.";
   if (normalized === "jazmin de leche" || normalized === "jazmin kimura cuatro estaciones") return "Jazmin trepador o arbustivo para sumar perfume y floracion prolongada.";
   if (normalized === "laurel de jardin") return "Arbusto resistente para patio o jardin, con una presencia muy ordenada.";
+  if (normalized === "laurel de jardin por cerco") return "Ideal para formar cercos verdes y prolijos, con buena estructura y crecimiento parejo.";
   if (normalized === "lantana") return "Florifera y muy rendidora al sol, ideal para macetas y canteros exteriores.";
+  if (normalized === "lavanda grande") return "Aromatica ornamental de follaje perfumado, muy linda para canteros, bordes y sol pleno.";
+  if (normalized === "mala madre") return "Muy facil de cuidar, ideal para interiores luminosos y para sumar verde sin mucho mantenimiento.";
   if (normalized === "limonero 4 estaciones") return "Frutal muy buscado para patios y jardines con sol, perfuma y decora al mismo tiempo.";
   if (normalized === "malvon doble") return "Flor vistosa y abundante para balcones, patios y galerias con buena luz.";
   if (normalized === "manto de virgen") return "Flor suave y rendidora para bordes, macetas y canteros de aspecto natural.";
+  if (normalized === "melaleuca") return "Arbusto de follaje fino y ornamental, ideal para sumar textura y movimiento al jardin.";
+  if (normalized === "nido de pajaro") return "Helecho de hoja amplia y centro marcado, muy decorativo para interior luminoso y humedo.";
   if (normalized === "ojo de poeta") return "Trepadora florifera de aspecto delicado, muy linda para tutores y cercos.";
   if (normalized === "palo de agua grande" || normalized === "palo de agua mediano") return "De buen porte y presencia, ideal para interiores con luz filtrada.";
+  if (normalized === "penisetum") return "Graminea ornamental de movimiento suave, ideal para canteros y jardines de bajo mantenimiento.";
   if (normalized === "pensamientos") return "Flor compacta y colorida para macetas de temporada, muy vistosa en exterior fresco.";
   if (normalized === "petunia") return "Flor de temporada ideal para balcones y macetas con mucho color.";
   if (normalized === "philodendron") return "Follaje tropical y noble, muy decorativo para interiores con luz natural estable.";
   if (normalized === "pindo") return "Palmera de gran porte para jardines y frentes con espacio.";
+  if (normalized === "potus colgante") return "Potus de caida natural, muy facil de cuidar e ideal para estantes, repisas o macetas altas.";
+  if (normalized === "potus con tutor") return "Version guiada para crecer en altura, ideal para interiores luminosos con look mas armado.";
   if (normalized === "potus n14") return "De las mas faciles de cuidar, ideal para colgar, apoyar o dejar trepar.";
   if (normalized === "rayito de sol") return "Flor alegre para exterior con muy buena respuesta al sol y al color de temporada.";
+  if (normalized === "raphi") return "Palmera elegante y resistente para interior, muy buena para ambientes amplios y luminosos.";
   if (normalized === "rosa china") return "Arbusto florifero de aspecto tropical, luce mucho con sol y riego regular.";
   if (normalized === "rosario") return "Suculenta colgante muy decorativa, agradece luz y riegos bien espaciados.";
+  if (normalized === "rubra") return "Follaje intenso y decorativo, ideal para destacar un rincon luminoso de interior.";
+  if (normalized === "ruelia") return "Florifera de tono violeta, muy noble para exterior y con buena respuesta en lugares soleados.";
   if (normalized === "rudas") return "Rustica y resistente, muy buena para exterior y de mantenimiento simple.";
   if (normalized === "salvia de jardin") return "Florifera y muy util para sumar color y movimiento en canteros o macetas.";
+  if (normalized === "salvia gregi") return "Salvia resistente de floracion prolongada que atrae colibries, ideal para sol y canteros con movimiento.";
   if (normalized === "sansevieria") return "Muy resistente y de riego espaciado, perfecta para quienes buscan poco mantenimiento.";
+  if (normalized === "solanum") return "Arbusto florifero de tono violeta, muy decorativo para sumar color en exterior luminoso.";
   if (normalized === "strelitzia reginae") return "De hoja amplia y porte elegante, aporta un aire tropical muy marcado.";
   if (normalized === "suculentas") return "Coleccion facil de cuidar, ideal para luz abundante y riegos moderados.";
+  if (normalized === "arreglo de suculentas") return "Composicion lista para decorar, con suculentas de bajo mantenimiento y gran valor ornamental.";
+  if (normalized === "tecoma") return "Trepadora o arbusto de flor amarilla, muy ornamental para jardines soleados y floracion vistosa.";
+  if (normalized === "teucrium") return "Arbusto compacto y resistente, ideal para borduras, canteros y sol pleno.";
   if (normalized === "trepadores santa rita") return "Trepadora fuerte y muy vistosa para frentes, muros y lugares bien soleados.";
   if (normalized === "violeta de los alpes") return "Flor delicada y muy decorativa para lugares frescos, protegidos y luminosos.";
   return "Planta de vivero seleccionada para espacios reales, con una presencia natural y facil de combinar.";
@@ -372,7 +569,7 @@ function buildPlantProducts(files, type) {
     const dataKey = resolveDataKey(rawName);
     const priceInfo = CSV_PRICE_DATA[dataKey] || null;
     const price = priceInfo?.precio ?? (priceMatch ? Number(priceMatch[1]) : null);
-    if (!dataKey || price === null) return null;
+    if (!dataKey) return null;
     return { id: 1000 + index + (type === "exterior" ? 500 : 0), nombre: getCanonicalPlantName(dataKey), precio: price, categoria: type === "exterior" ? "exterior" : "interior", seccionPlanta: getPlantSectionType(filePath, dataKey, type), destacado: true, stockLimitado: false, agotado: Boolean(priceInfo?.agotado), imagen: filePath, imagenes: [filePath], descripcion: getPlantDescription(dataKey), colores: getPlantFlowerColors(dataKey), tamanos: ["Presentacion standard"] };
   }).filter(Boolean);
 
@@ -402,7 +599,7 @@ function buildOtherProducts(files) {
     const dataKey = resolveDataKey(rawName);
     const priceInfo = CSV_PRICE_DATA[dataKey] || null;
     const precio = priceInfo?.precio ?? (folderMatch ? Number(folderMatch[2]) : null);
-    if (!dataKey || precio === null) return null;
+    if (!dataKey) return null;
     return { id: 3000 + index, nombre: formatPlantName(dataKey), precio, categoria: "otros", destacado: false, stockLimitado: false, agotado: Boolean(priceInfo?.agotado), imagen: filePath, imagenes: [filePath], descripcion: "Accesorio o insumo complementario para sumar detalle y funcionalidad al vivero.", colores: [{ nombre: "Natural", hex: "#d8c8b3" }], tamanos: ["Standard"] };
   }).filter(Boolean);
 
@@ -438,6 +635,16 @@ if (alegriaProducts[0]) {
 const helechoArroz = products.find((product) => product.nombre === "Helecho Arroz");
 if (helechoArroz) {
   helechoArroz.agotado = true;
+}
+
+const salviaDeJardin = products.find((product) => product.nombre === "Salvia De Jardin");
+if (salviaDeJardin) {
+  salviaDeJardin.agotado = true;
+}
+
+const ficusBenghalensis = products.find((product) => product.nombre === "Ficus benghalensis");
+if (ficusBenghalensis) {
+  ficusBenghalensis.agotado = true;
 }
 
 const mantoDeVirgen = products.find((product) => product.nombre === "Manto De Virgen");
@@ -487,6 +694,12 @@ if (santaRitaIndex >= 0) {
   products.splice(santaRitaIndex, 1);
 }
 
+for (let index = products.length - 1; index >= 0; index -= 1) {
+  if (["Begonia", "Helecho Asplenium Nidus", "Malvo", "Suculentas Y Cactus", "Cactus y Suculentas", "Colgantes", "Budas"].includes(products[index].nombre)) {
+    products.splice(index, 1);
+  }
+}
+
 const violetaDeLosAlpes = products.find((product) => product.nombre === "Violeta De Los Alpes");
 if (violetaDeLosAlpes) {
   violetaDeLosAlpes.colores = [
@@ -495,15 +708,204 @@ if (violetaDeLosAlpes) {
   ];
 }
 
+const dolarProduct = products.find((product) => product.nombre === "Dolar");
+if (dolarProduct) {
+  dolarProduct.imagenes = [
+    "plantas/plantas de interior/dolar/WhatsApp Image 2026-04-08 at 16.51.51.jpeg"
+  ];
+  dolarProduct.imagen = dolarProduct.imagenes[0];
+}
+
+const sansevieriaProduct = products.find((product) => product.nombre === "Sansevieria");
+if (sansevieriaProduct) {
+  sansevieriaProduct.imagenes = [
+    "plantas/plantas de interior/sanseviera/1000090420.jpg",
+    "plantas/plantas de interior/sanseviera/1000090421.jpg",
+    "plantas/plantas de interior/sanseviera/1000090422.jpg",
+    "plantas/plantas de interior/sanseviera/WhatsApp Image 2026-04-08 at 16.43.50.jpeg",
+    "plantas/plantas de interior/sanseviera/WhatsApp Image 2026-04-08 at 16.43.51.jpeg"
+  ];
+  sansevieriaProduct.imagen = sansevieriaProduct.imagenes[0];
+}
+
 const suculentasProduct = products.find((product) => product.nombre === "Suculentas");
 if (suculentasProduct) {
   suculentasProduct.imagenes = [
-    "plantas/suculentas y cactus/IMG_20260330_183025.jpg",
-    "plantas/suculentas y cactus/IMG_20260330_183027.jpg",
-    "plantas/suculentas y cactus/IMG_20260330_183029.jpg"
+    "plantas/suculentas y cactus/suculentas/IMG_20260330_183025.jpg",
+    "plantas/suculentas y cactus/suculentas/IMG_20260330_183027.jpg",
+    "plantas/suculentas y cactus/suculentas/IMG_20260330_183029.jpg"
   ];
   suculentasProduct.imagen = suculentasProduct.imagenes[0];
 }
+
+const cactusProduct = products.find((product) => product.nombre === "Cactus");
+if (cactusProduct) {
+  cactusProduct.imagenes = [
+    "plantas/suculentas y cactus/cactus/IMG_20260330_182957.jpg",
+    "plantas/suculentas y cactus/cactus/IMG_20260330_183008.jpg",
+    "plantas/suculentas y cactus/cactus/IMG_20260330_183012.jpg"
+  ];
+  cactusProduct.imagen = cactusProduct.imagenes[0];
+}
+
+const melaleuca = products.find((product) => product.nombre === "Melaleuca");
+if (melaleuca) {
+  melaleuca.precio = null;
+}
+
+const interiorImageOverrides = {
+  "alegria del hogar": [
+    "plantas/plantas de interior/alegria del hogar/WhatsApp Image 2026-03-30 at 16.26.57.jpeg",
+    "plantas/plantas de interior/alegria del hogar/WhatsApp Image 2026-03-30 at 16.27.03.jpeg"
+  ],
+  aphelandra: [
+    "plantas/plantas de interior/aphelandra/IMG_20260330_152313.jpg",
+    "plantas/plantas de interior/aphelandra/IMG_20260330_152317.jpg"
+  ],
+  "begonia dragon": [
+    "plantas/plantas de interior/begonia dragon/WhatsApp Image 2026-04-08 at 16.40.25.jpeg",
+    "plantas/plantas de interior/begonia dragon/WhatsApp Image 2026-04-08 at 16.40.26.jpeg"
+  ],
+  "calathea macuyana": [
+    "plantas/plantas de interior/calathea macuyana/WhatsApp Image 2026-04-08 at 16.53.33.jpeg",
+    "plantas/plantas de interior/calathea macuyana/WhatsApp Image 2026-04-08 at 16.53.34.jpeg"
+  ],
+  "chamaedorea elegans": [
+    "plantas/plantas de interior/chamaedorea elegans/IMG_20260330_152928.jpg",
+    "plantas/plantas de interior/chamaedorea elegans/IMG_20260330_152932.jpg"
+  ],
+  "costilla de adan": [
+    "plantas/plantas de interior/costilla de adan/costilla de adan.jpg",
+    "plantas/plantas de interior/costilla de adan/IMG_20260330_152047.jpg",
+    "plantas/plantas de interior/costilla de adan/WhatsApp Image 2026-04-08 at 16.38.37.jpeg",
+    "plantas/plantas de interior/costilla de adan/WhatsApp Image 2026-04-08 at 16.38.38.jpeg"
+  ],
+  dieffenbachia: [
+    "plantas/plantas de interior/dieffenbachia/IMG_20260330_152943.jpg",
+    "plantas/plantas de interior/dieffenbachia/IMG_20260330_152945.jpg"
+  ],
+  "dieffencachia tropic": [
+    "plantas/plantas de interior/dieffencachia tropic/IMG_20260330_153002.jpg",
+    "plantas/plantas de interior/dieffencachia tropic/IMG_20260330_153006.jpg"
+  ],
+  dolar: [
+    "plantas/plantas de interior/dolar/WhatsApp Image 2026-04-08 at 16.51.51.jpeg"
+  ],
+  dracena: [
+    "plantas/plantas de interior/dracena/IMG_20260330_152911.jpg",
+    "plantas/plantas de interior/dracena/IMG_20260330_152915.jpg"
+  ],
+  "enamorada del muro": [
+    "plantas/plantas de interior/enamorada del muro/WhatsApp Image 2026-03-30 at 16.26.08.jpeg"
+  ],
+  ficus: [
+    "plantas/plantas de interior/ficus/IMG_20260330_152517.jpg",
+    "plantas/plantas de interior/ficus/IMG_20260330_152549.jpg"
+  ],
+  "ficus benghanlensis": [
+    "plantas/plantas de interior/ficus benghanlensis/IMG_20260330_152656.jpg",
+    "plantas/plantas de interior/ficus benghanlensis/IMG_20260330_152702.jpg"
+  ],
+  geranios: [
+    "plantas/plantas de interior/geraneos/geraneos(3000).jpeg",
+    "plantas/plantas de interior/geraneos/geraneos(3000)2.jpeg",
+    "plantas/plantas de interior/geraneos/geraneos(3000)3.jpeg"
+  ],
+  gomero: [
+    "plantas/plantas de interior/gomero/IMG_20260330_152442.jpg",
+    "plantas/plantas de interior/gomero/IMG_20260330_152448.jpg"
+  ],
+  "gomero variegado": [
+    "plantas/plantas de interior/gomero variegado/WhatsApp Image 2026-04-08 at 16.54.32.jpeg",
+    "plantas/plantas de interior/gomero variegado/WhatsApp Image 2026-04-08 at 16.54.33.jpeg"
+  ],
+  helecho: [
+    "plantas/plantas de interior/helecho/1000090427.jpg",
+    "plantas/plantas de interior/helecho/IMG_20260330_151824.jpg",
+    "plantas/plantas de interior/helecho/IMG_20260330_151828.jpg"
+  ],
+  "helecho piedra": [
+    "plantas/plantas de interior/helecho piedra/WhatsApp Image 2026-04-08 at 16.39.58.jpeg",
+    "plantas/plantas de interior/helecho piedra/WhatsApp Image 2026-04-08 at 16.39.59.jpeg"
+  ],
+  huerta: [
+    "plantas/plantas de interior/huertas/huerta(2500).jpeg",
+    "plantas/plantas de interior/huertas/huerta(2500)2.jpeg"
+  ],
+  "mala madre": [
+    "plantas/plantas de interior/mala madre/WhatsApp Image 2026-04-08 at 16.49.51.jpeg",
+    "plantas/plantas de interior/mala madre/WhatsApp Image 2026-04-08 at 16.50.04.jpeg"
+  ],
+  marginata: [
+    "plantas/plantas de interior/marginata/IMG_20260330_152748.jpg",
+    "plantas/plantas de interior/marginata/IMG_20260330_152816.jpg",
+    "plantas/plantas de interior/marginata/WhatsApp Image 2026-04-08 at 16.41.19.jpeg"
+  ],
+  "marginata grande": [
+    "plantas/plantas de interior/marginata grande/WhatsApp Image 2026-04-08 at 16.42.29.jpeg"
+  ],
+  "nido de pajaro": [
+    "plantas/plantas de interior/nido de pajaro/WhatsApp Image 2026-04-08 at 16.39.13.jpeg"
+  ],
+  "palo de agua grande": [
+    "plantas/plantas de interior/palo de agua grande/IMG_20260330_152102.jpg",
+    "plantas/plantas de interior/palo de agua grande/IMG_20260330_152104.jpg",
+    "plantas/plantas de interior/palo de agua grande/IMG_20260330_152109.jpg"
+  ],
+  "palo de agua mediano": [
+    "plantas/plantas de interior/palo de agua mediano/IMG_20260330_151656.jpg",
+    "plantas/plantas de interior/palo de agua mediano/IMG_20260330_151702.jpg",
+    "plantas/plantas de interior/palo de agua mediano/WhatsApp Image 2026-04-08 at 16.38.38.jpeg",
+    "plantas/plantas de interior/palo de agua mediano/WhatsApp Image 2026-04-08 at 16.38.39.jpeg"
+  ],
+  philodendron: [
+    "plantas/plantas de interior/philodendron/IMG_20260330_153415.jpg",
+    "plantas/plantas de interior/philodendron/IMG_20260330_153425.jpg"
+  ],
+  "potus colgante": [
+    "plantas/plantas de interior/potus colgante/WhatsApp Image 2026-04-08 at 16.35.40.jpeg",
+    "plantas/plantas de interior/potus colgante/WhatsApp Image 2026-04-08 at 16.35.41.jpeg"
+  ],
+  "potus con tutor": [
+    "plantas/plantas de interior/potus con tutor/WhatsApp Image 2026-04-08 at 16.50.34.jpeg",
+    "plantas/plantas de interior/potus con tutor/WhatsApp Image 2026-04-08 at 16.50.35.jpeg"
+  ],
+  "potus n14": [
+    "plantas/plantas de interior/potus n14/IMG_20260330_152247.jpg",
+    "plantas/plantas de interior/potus n14/IMG_20260330_152251.jpg"
+  ],
+  raphi: [
+    "plantas/plantas de interior/raphi/WhatsApp Image 2026-04-08 at 16.52.50.jpeg"
+  ],
+  rubra: [
+    "plantas/plantas de interior/rubra/WhatsApp Image 2026-04-08 at 16.51.19.jpeg"
+  ],
+  sansevieria: [
+    "plantas/plantas de interior/sanseviera/1000090420.jpg",
+    "plantas/plantas de interior/sanseviera/1000090421.jpg",
+    "plantas/plantas de interior/sanseviera/1000090422.jpg",
+    "plantas/plantas de interior/sanseviera/WhatsApp Image 2026-04-08 at 16.43.50.jpeg",
+    "plantas/plantas de interior/sanseviera/WhatsApp Image 2026-04-08 at 16.43.51.jpeg"
+  ],
+  "strelitzia reginae": [
+    "plantas/plantas de interior/strelizia reginae/IMG_20260330_152141.jpg",
+    "plantas/plantas de interior/strelizia reginae/IMG_20260330_152145.jpg"
+  ],
+  "violeta de los alpes": [
+    "plantas/plantas de interior/violeta de los alpes/violeta de los alpes (2).jpeg",
+    "plantas/plantas de interior/violeta de los alpes/violeta de los alpes(7000).jpeg",
+    "plantas/plantas de interior/violeta de los alpes/violeta de los alpes(7000)2.jpeg",
+    "plantas/plantas de interior/violeta de los alpes/violeta de los alpes.jpeg"
+  ]
+};
+
+products.forEach((product) => {
+  if (product.categoria !== "interior") return;
+  const overrideImages = interiorImageOverrides[resolveDataKey(product.nombre)];
+  if (!overrideImages?.length) return;
+  product.imagenes = overrideImages;
+  product.imagen = overrideImages[0];
+});
 
 const bignonia = products.find((product) => product.nombre === "Bignonia");
 if (bignonia) {
@@ -535,6 +937,18 @@ if (petunia) {
 
 function folderLabel(name) {
   return String(name || "").replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function getCategoryLabel(category) {
+  const labels = {
+    barro: "barro",
+    plastico: "plastico",
+    cemento: "cemento",
+    interior: "interior",
+    exterior: "exterior",
+    otros: "productos para jardinería"
+  };
+  return labels[category] || category;
 }
 
 function plasticColors(...names) {
@@ -715,7 +1129,7 @@ function createProductsMarkup(items) {
         </div>
         <div class="product-card__body">
           <div class="product-card__meta">
-            <span class="product-card__kicker">${product.categoria}</span>
+            <span class="product-card__kicker">${getCategoryLabel(product.categoria)}</span>
             <div class="product-card__copy">
               <h3>${product.nombre}</h3>
               <p>${product.descripcion}</p>
@@ -748,7 +1162,7 @@ function createMaterialGroupsMarkup(items) {
 }
 
 function createPlantGroupsMarkup(items) {
-  const groups = [{ key: "interior", title: "Plantas de interior", empty: "Todavia no encontramos plantas de interior para ese filtro." }, { key: "suculentas", title: "Suculentas", empty: "Todavia no encontramos suculentas para ese filtro." }, { key: "exterior", title: "Plantas de exterior", empty: "Todavia no encontramos plantas de exterior para ese filtro." }];
+  const groups = [{ key: "interior", title: "Plantas de interior", empty: "Todavía no encontramos plantas de interior para ese filtro." }, { key: "suculentas", title: "Suculentas", empty: "Todavía no encontramos suculentas para ese filtro." }, { key: "exterior", title: "Plantas de exterior", empty: "Todavía no encontramos plantas de exterior para ese filtro." }];
   const visibleGroups = state.selectedPlantType === "all" ? groups : groups.filter((group) => group.key === state.selectedPlantType);
   return visibleGroups.map((group) => {
     const groupItems = items.filter((item) => item.seccionPlanta === group.key);
@@ -872,7 +1286,7 @@ function showNextImage() { if (state.selectedProduct?.imagenes?.length) { const 
 
 function renderProducts() {
   const filteredProducts = getFilteredProducts();
-  const headings = { all: "Todos los productos", macetas: "Macetas", plantas: "Plantas" };
+  const headings = { all: "Todos los productos", macetas: "Macetas", plantas: "Plantas", otros: "Productos para jardinería" };
   elements.productsHeading.textContent = headings[state.selectedCategory] || "Productos";
   if (state.selectedCategory === "macetas") {
     const macetas = filteredProducts.filter((product) => ["barro", "plastico"].includes(product.categoria));
@@ -965,7 +1379,7 @@ function removeFromCart(index) { state.cart.splice(index, 1); renderCart(); }
 
 function renderCart() {
   if (!state.cart.length) {
-    elements.cartItems.innerHTML = '<p class="cart-empty">Todavia no agregaste productos.</p>';
+    elements.cartItems.innerHTML = '<p class="cart-empty">Todavía no agregaste productos.</p>';
   } else {
     elements.cartItems.innerHTML = state.cart.map((item, index) => `
       <article class="cart-item">

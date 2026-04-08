@@ -786,6 +786,15 @@ button {
   align-items: center;
 }
 
+.cart-item__top {
+  align-items: flex-start;
+}
+
+.cart-item__top > div {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
 .cart-item__bottom,
 .cart-summary__row {
   width: 100%;
@@ -832,6 +841,10 @@ button {
 .cart-item h4,
 .cart-item p {
   margin: 0;
+}
+
+.cart-item h4 {
+  overflow-wrap: anywhere;
 }
 
 .cart-item p {
@@ -1145,15 +1158,8 @@ input[type="number"] {
     width: min(360px, calc(100vw - 48px));
     max-height: calc(100vh - 130px);
     overflow: auto;
-    transform: translateX(110%);
-    transition: transform 0.25s ease;
     z-index: 22;
   }
-
-  .cart-panel.is-open {
-    transform: translateX(0);
-  }
-
 }
 
 @media (max-width: 980px) {
@@ -1469,6 +1475,8 @@ input[type="number"] {
     display: grid;
     align-content: start;
     overflow: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     padding: 12px 14px 8px;
   }
 
@@ -1578,6 +1586,10 @@ input[type="number"] {
     gap: 20px;
   }
 
+  .layout {
+    padding-bottom: 82px;
+  }
+
   .material-group {
     margin-bottom: 24px;
   }
@@ -1597,6 +1609,7 @@ input[type="number"] {
 
   .product-modal {
     width: 100%;
+    max-height: calc(100dvh - 20px);
     max-height: calc(100vh - 20px);
     border-radius: 22px;
   }
@@ -1611,7 +1624,7 @@ input[type="number"] {
   }
 
   .modal-content {
-    padding: 18px 16px 16px;
+    padding: 18px 16px calc(16px + env(safe-area-inset-bottom));
   }
 
   .primary-button,
