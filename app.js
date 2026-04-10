@@ -228,10 +228,17 @@ function formatPrice(value) {
   }).format(value);
 }
 
+function getDisplayPrice(product) {
+  if (product?.precioTexto) return product.precioTexto;
+  if (typeof product?.precio === "number") return formatPrice(product.precio);
+  return "Consultar precio";
+}
+
 function makeProduct({
   id,
   nombre,
   precio = null,
+  precioTexto = "",
   categoria,
   descripcion,
   imagen,
@@ -249,6 +256,7 @@ function makeProduct({
     id,
     nombre,
     precio,
+    precioTexto,
     categoria,
     descripcion,
     imagen,
@@ -303,11 +311,11 @@ const products = [
 ];
 
 const plantInteriorFiles = [
-  "plantas/plantas de interior/agapantus(6000).jpeg", "plantas/plantas de interior/aromaticas(1500).jpeg", "plantas/plantas de interior/cola de burro(7000).jpeg", "plantas/plantas de interior/colgantes(7000).jpeg", "plantas/plantas de interior/gazaña gigante(1700).jpeg", "plantas/plantas de interior/helecho arroz(2000).jpeg", "plantas/plantas de interior/limonero 4 estaciones(23000).jpeg", "plantas/plantas de interior/manto de virgen(3000).jpeg", "plantas/plantas de interior/manto de virgen(7000).jpeg", "plantas/plantas de interior/ojo de poeta(6000).jpeg", "plantas/plantas de interior/pensamientos 2 uidades(3000).jpeg", "plantas/plantas de interior/rosario(7000).jpeg", "plantas/plantas de interior/rudas(1500).jpeg", "plantas/plantas de interior/strelizia reginae(35000).jpeg", "plantas/plantas de interior/trepadores santa rita(6000).jpeg", "plantas/plantas de interior/alegria del hogar/WhatsApp Image 2026-03-30 at 16.26.57.jpeg", "plantas/plantas de interior/alegria del hogar/WhatsApp Image 2026-03-30 at 16.27.03.jpeg", "plantas/plantas de interior/aphelandra/IMG_20260330_152313.jpg", "plantas/plantas de interior/aphelandra/IMG_20260330_152317.jpg", "plantas/plantas de interior/begonia/1000090425.jpg", "plantas/plantas de interior/begonia/IMG_20260330_151747.jpg", "plantas/plantas de interior/begonia/IMG_20260330_151753.jpg", "plantas/plantas de interior/chamaedorea elegans/IMG_20260330_152928.jpg", "plantas/plantas de interior/chamaedorea elegans/IMG_20260330_152932.jpg", "plantas/plantas de interior/costilla de adan/costilla de adan.jpg", "plantas/plantas de interior/costilla de adan/IMG_20260330_152047.jpg", "plantas/plantas de interior/dieffenbachia/IMG_20260330_152943.jpg", "plantas/plantas de interior/dieffenbachia/IMG_20260330_152945.jpg", "plantas/plantas de interior/dieffencachia tropic/IMG_20260330_153002.jpg", "plantas/plantas de interior/dieffencachia tropic/IMG_20260330_153006.jpg", "plantas/plantas de interior/dolar/IMG_20260330_153436.jpg", "plantas/plantas de interior/dolar/IMG_20260330_153440.jpg", "plantas/plantas de interior/dracena/IMG_20260330_152911.jpg", "plantas/plantas de interior/dracena/IMG_20260330_152915.jpg", "plantas/plantas de interior/enamorada del muro/WhatsApp Image 2026-03-30 at 16.26.08.jpeg", "plantas/plantas de interior/ficus/IMG_20260330_152517.jpg", "plantas/plantas de interior/ficus/IMG_20260330_152549.jpg", "plantas/plantas de interior/ficus benghanlensis/IMG_20260330_152656.jpg", "plantas/plantas de interior/ficus benghanlensis/IMG_20260330_152702.jpg", "plantas/plantas de interior/geraneos/geraneos(3000).jpeg", "plantas/plantas de interior/geraneos/geraneos(3000)2.jpeg", "plantas/plantas de interior/geraneos/geraneos(3000)3.jpeg", "plantas/plantas de interior/gomero/IMG_20260330_152442.jpg", "plantas/plantas de interior/gomero/IMG_20260330_152448.jpg", "plantas/plantas de interior/gomero variegado/gomero(33000).jpeg", "plantas/plantas de interior/gomero variegado/gomero(33000)2.jpeg", "plantas/plantas de interior/helecho/1000090427.jpg", "plantas/plantas de interior/helecho/IMG_20260330_151824.jpg", "plantas/plantas de interior/helecho/IMG_20260330_151828.jpg", "plantas/plantas de interior/helecho asplenium nidus/IMG_20260330_152413.jpg", "plantas/plantas de interior/helecho asplenium nidus/IMG_20260330_152417.jpg", "plantas/plantas de interior/huertas/huerta(2500).jpeg", "plantas/plantas de interior/huertas/huerta(2500)2.jpeg", "plantas/plantas de interior/marginata/IMG_20260330_152748.jpg", "plantas/plantas de interior/marginata/IMG_20260330_152816.jpg", "plantas/plantas de interior/palo de agua grande/IMG_20260330_152102.jpg", "plantas/plantas de interior/palo de agua grande/IMG_20260330_152104.jpg", "plantas/plantas de interior/palo de agua grande/IMG_20260330_152109.jpg", "plantas/plantas de interior/palo de agua mediano/IMG_20260330_151656.jpg", "plantas/plantas de interior/palo de agua mediano/IMG_20260330_151702.jpg", "plantas/plantas de interior/philodendron/IMG_20260330_153415.jpg", "plantas/plantas de interior/philodendron/IMG_20260330_153425.jpg", "plantas/plantas de interior/potus n14/IMG_20260330_152247.jpg", "plantas/plantas de interior/potus n14/IMG_20260330_152251.jpg", "plantas/plantas de interior/rosa china/rosa china (2)(6000).jpeg", "plantas/plantas de interior/rosa china/rosa china (3)(6000).jpeg", "plantas/plantas de interior/rosa china/rosa china(6000).jpeg", "plantas/plantas de interior/strelizia reginae/IMG_20260330_152141.jpg", "plantas/plantas de interior/strelizia reginae/IMG_20260330_152145.jpg", "plantas/plantas de interior/suculentas/suculentas(4000).jpeg", "plantas/plantas de interior/violeta de los alpes/violeta de los alpes (2).jpeg", "plantas/plantas de interior/violeta de los alpes/violeta de los alpes(7000).jpeg", "plantas/plantas de interior/violeta de los alpes/violeta de los alpes(7000)2.jpeg", "plantas/plantas de interior/violeta de los alpes/violeta de los alpes.jpeg"
+  "plantas/plantas de interior/agapantus(6000).jpeg", "plantas/plantas de exterior/aromaticas(1500).jpeg", "plantas/plantas de interior/cola de burro(7000).jpeg", "plantas/plantas de interior/colgantes(7000).jpeg", "plantas/plantas de exterior/gazaña gigante(1700).jpeg", "plantas/plantas de interior/helecho arroz(2000).jpeg", "plantas/plantas de exterior/limonero 4 estaciones(23000).jpeg", "plantas/plantas de interior/manto de virgen(3000).jpeg", "plantas/plantas de interior/manto de virgen(7000).jpeg", "plantas/plantas de exterior/ojo de poeta(6000).jpeg", "plantas/plantas de exterior/pensamientos 2 uidades(3000).jpeg", "plantas/plantas de exterior/rosario(7000).jpeg", "plantas/plantas de exterior/rudas(1500).jpeg", "plantas/plantas de interior/strelizia reginae(35000).jpeg", "plantas/plantas de exterior/trepadores santa rita(6000).jpeg", "plantas/plantas de interior/aphelandra/IMG_20260330_152313.jpg", "plantas/plantas de interior/aphelandra/IMG_20260330_152317.jpg", "plantas/plantas de interior/begonia/1000090425.jpg", "plantas/plantas de interior/begonia/IMG_20260330_151747.jpg", "plantas/plantas de interior/begonia/IMG_20260330_151753.jpg", "plantas/plantas de interior/chamaedorea elegans/IMG_20260330_152928.jpg", "plantas/plantas de interior/chamaedorea elegans/IMG_20260330_152932.jpg", "plantas/plantas de interior/costilla de adan/costilla de adan.jpg", "plantas/plantas de interior/costilla de adan/IMG_20260330_152047.jpg", "plantas/plantas de interior/dieffenbachia/IMG_20260330_152943.jpg", "plantas/plantas de interior/dieffenbachia/IMG_20260330_152945.jpg", "plantas/plantas de interior/dieffencachia tropic/IMG_20260330_153002.jpg", "plantas/plantas de interior/dieffencachia tropic/IMG_20260330_153006.jpg", "plantas/plantas de interior/dolar/IMG_20260330_153436.jpg", "plantas/plantas de interior/dolar/IMG_20260330_153440.jpg", "plantas/plantas de interior/dracena/IMG_20260330_152911.jpg", "plantas/plantas de interior/dracena/IMG_20260330_152915.jpg", "plantas/plantas de interior/enamorada del muro/WhatsApp Image 2026-03-30 at 16.26.08.jpeg", "plantas/plantas de interior/ficus/IMG_20260330_152517.jpg", "plantas/plantas de interior/ficus/IMG_20260330_152549.jpg", "plantas/plantas de interior/ficus benghanlensis/IMG_20260330_152656.jpg", "plantas/plantas de interior/ficus benghanlensis/IMG_20260330_152702.jpg", "plantas/plantas de interior/geraneos/geraneos(3000).jpeg", "plantas/plantas de interior/geraneos/geraneos(3000)2.jpeg", "plantas/plantas de interior/geraneos/geraneos(3000)3.jpeg", "plantas/plantas de interior/gomero/IMG_20260330_152442.jpg", "plantas/plantas de interior/gomero/IMG_20260330_152448.jpg", "plantas/plantas de interior/gomero variegado/gomero(33000).jpeg", "plantas/plantas de interior/gomero variegado/gomero(33000)2.jpeg", "plantas/plantas de interior/helecho/1000090427.jpg", "plantas/plantas de interior/helecho/IMG_20260330_151824.jpg", "plantas/plantas de interior/helecho/IMG_20260330_151828.jpg", "plantas/plantas de interior/helecho asplenium nidus/IMG_20260330_152413.jpg", "plantas/plantas de interior/helecho asplenium nidus/IMG_20260330_152417.jpg", "plantas/plantas de interior/huertas/huerta(2500).jpeg", "plantas/plantas de interior/huertas/huerta(2500)2.jpeg", "plantas/plantas de interior/marginata/IMG_20260330_152748.jpg", "plantas/plantas de interior/marginata/IMG_20260330_152816.jpg", "plantas/plantas de interior/palo de agua grande/IMG_20260330_152102.jpg", "plantas/plantas de interior/palo de agua grande/IMG_20260330_152104.jpg", "plantas/plantas de interior/palo de agua grande/IMG_20260330_152109.jpg", "plantas/plantas de interior/palo de agua mediano/IMG_20260330_151656.jpg", "plantas/plantas de interior/palo de agua mediano/IMG_20260330_151702.jpg", "plantas/plantas de interior/philodendron/IMG_20260330_153415.jpg", "plantas/plantas de interior/philodendron/IMG_20260330_153425.jpg", "plantas/plantas de interior/potus n14/IMG_20260330_152247.jpg", "plantas/plantas de interior/potus n14/IMG_20260330_152251.jpg", "plantas/plantas de interior/rosa china/rosa china (2)(6000).jpeg", "plantas/plantas de interior/rosa china/rosa china (3)(6000).jpeg", "plantas/plantas de interior/rosa china/rosa china(6000).jpeg", "plantas/plantas de interior/strelizia reginae/IMG_20260330_152141.jpg", "plantas/plantas de interior/strelizia reginae/IMG_20260330_152145.jpg", "plantas/plantas de interior/suculentas/suculentas(4000).jpeg", "plantas/plantas de exterior/violeta de los alpes/violeta de los alpes (2).jpeg", "plantas/plantas de exterior/violeta de los alpes/violeta de los alpes(7000).jpeg", "plantas/plantas de exterior/violeta de los alpes/violeta de los alpes(7000)2.jpeg", "plantas/plantas de exterior/violeta de los alpes/violeta de los alpes.jpeg"
 ];
 
 const plantExteriorFiles = [
-  "plantas/plantas de exterior/alegria del hogar.jpg", "plantas/plantas de exterior/copetito.jpg", "plantas/plantas de exterior/petunia.jpg", "plantas/plantas de exterior/rayito de sol.jpg", "plantas/plantas de exterior/bignonia/IMG_20260330_183527.jpg", "plantas/plantas de exterior/bignonia/IMG_20260330_183532.jpg", "plantas/plantas de exterior/bignonia/IMG_20260330_183539.jpg", "plantas/plantas de exterior/gazaña/IMG_20260330_183358.jpg", "plantas/plantas de exterior/gazaña/IMG_20260330_183408.jpg", "plantas/plantas de exterior/malvon doble/IMG_20260330_183141.jpg", "plantas/plantas de exterior/malvon doble/malvo.jpg", "plantas/plantas de exterior/pindo/pindo.jpg", "plantas/plantas de exterior/rosa china/IMG_20260330_183854.jpg", "plantas/plantas de exterior/rosa china/IMG_20260330_183907.jpg", "plantas/plantas de exterior/rosa china/rosa china (3)(6000).jpeg", "plantas/plantas de exterior/rosa china/rosa china(6000).jpeg", "plantas/plantas de exterior/rosa china/rosa china.jpeg", "plantas/plantas de exterior/salvia/IMG_20260330_183556.jpg", "plantas/plantas de exterior/salvia/IMG_20260330_183559.jpg", "plantas/suculentas y cactus/cactus/IMG_20260330_182957.jpg", "plantas/suculentas y cactus/cactus/IMG_20260330_183008.jpg", "plantas/suculentas y cactus/cactus/IMG_20260330_183012.jpg", "plantas/suculentas y cactus/IMG_20260330_183025.jpg", "plantas/suculentas y cactus/IMG_20260330_183027.jpg", "plantas/suculentas y cactus/IMG_20260330_183029.jpg"
+  "plantas/plantas de exterior/alegria del hogar/alegria del hogar.jpg", "plantas/plantas de exterior/alegria del hogar/WhatsApp Image 2026-03-30 at 16.26.57.jpeg", "plantas/plantas de exterior/alegria del hogar/WhatsApp Image 2026-03-30 at 16.27.03.jpeg", "plantas/plantas de exterior/copetito.jpg", "plantas/plantas de exterior/petunia.jpg", "plantas/plantas de exterior/rayito de sol.jpg", "plantas/plantas de exterior/bignonia/IMG_20260330_183527.jpg", "plantas/plantas de exterior/bignonia/IMG_20260330_183532.jpg", "plantas/plantas de exterior/bignonia/IMG_20260330_183539.jpg", "plantas/plantas de exterior/gazaña/IMG_20260330_183358.jpg", "plantas/plantas de exterior/gazaña/IMG_20260330_183408.jpg", "plantas/plantas de exterior/malvon doble/IMG_20260330_183141.jpg", "plantas/plantas de exterior/malvon doble/malvo.jpg", "plantas/plantas de exterior/pindo/pindo.jpg", "plantas/plantas de exterior/rosa china/IMG_20260330_183854.jpg", "plantas/plantas de exterior/rosa china/IMG_20260330_183907.jpg", "plantas/plantas de exterior/rosa china/rosa china (3)(6000).jpeg", "plantas/plantas de exterior/rosa china/rosa china(6000).jpeg", "plantas/plantas de exterior/rosa china/rosa china.jpeg", "plantas/plantas de exterior/salvia/IMG_20260330_183556.jpg", "plantas/plantas de exterior/salvia/IMG_20260330_183559.jpg", "plantas/suculentas y cactus/cactus/IMG_20260330_182957.jpg", "plantas/suculentas y cactus/cactus/IMG_20260330_183008.jpg", "plantas/suculentas y cactus/cactus/IMG_20260330_183012.jpg", "plantas/suculentas y cactus/suculentas/IMG_20260330_183025.jpg", "plantas/suculentas y cactus/suculentas/IMG_20260330_183027.jpg", "plantas/suculentas y cactus/suculentas/IMG_20260330_183029.jpg"
 ];
 
 const otherProductFiles = [
@@ -621,15 +629,37 @@ products.push(...buildPlantProducts(plantInteriorFiles, "interior"), ...buildPla
 
 products.forEach((product) => { if (product.categoria === "barro") { product.agotado = true; } });
 
-const alegriaProducts = products.filter((product) => product.nombre === "Alegria Del Hogar");
-if (alegriaProducts[0]) {
-  alegriaProducts[0].imagenes = alegriaProducts[0].imagenes.slice(0, 1);
-  alegriaProducts[0].imagen = alegriaProducts[0].imagenes[0];
-  alegriaProducts[0].colores = [
-    { nombre: "Violeta", hex: "#8b68ba" },
-    { nombre: "Rojo", hex: "#b84a59" },
-    { nombre: "Blanco", hex: "#f3efe7" }
+const alegriaProducts = products
+  .map((product, index) => ({ product, index }))
+  .filter(({ product }) => product.nombre === "Alegria Del Hogar");
+if (alegriaProducts.length) {
+  const alegriaPrincipal = alegriaProducts.find(({ product }) => product.categoria === "exterior") || alegriaProducts[0];
+  const alegriaImages = [
+    "plantas/plantas de exterior/alegria del hogar/alegria del hogar.jpg",
+    "plantas/plantas de exterior/alegria del hogar/WhatsApp Image 2026-03-30 at 16.26.57.jpeg",
+    "plantas/plantas de exterior/alegria del hogar/WhatsApp Image 2026-03-30 at 16.27.03.jpeg"
   ];
+
+  alegriaPrincipal.product.categoria = "exterior";
+  alegriaPrincipal.product.seccionPlanta = "exterior";
+  alegriaPrincipal.product.precio = 4000;
+  alegriaPrincipal.product.precioTexto = "3 x $4000";
+  alegriaPrincipal.product.tamanos = ["Pack x3"];
+  alegriaPrincipal.product.imagenes = alegriaImages;
+  alegriaPrincipal.product.imagen = alegriaImages[0];
+  alegriaPrincipal.product.colores = [
+    { nombre: "Rosa", hex: "#d68398" },
+    { nombre: "Rojo", hex: "#b84a59" },
+    { nombre: "Blanco", hex: "#f3efe7" },
+    { nombre: "Violeta", hex: "#8b68ba" }
+  ];
+
+  alegriaProducts
+    .filter(({ index }) => index !== alegriaPrincipal.index)
+    .sort((a, b) => b.index - a.index)
+    .forEach(({ index }) => {
+      products.splice(index, 1);
+    });
 }
 
 const helechoArroz = products.find((product) => product.nombre === "Helecho Arroz");
@@ -754,10 +784,6 @@ if (melaleuca) {
 }
 
 const interiorImageOverrides = {
-  "alegria del hogar": [
-    "plantas/plantas de interior/alegria del hogar/WhatsApp Image 2026-03-30 at 16.26.57.jpeg",
-    "plantas/plantas de interior/alegria del hogar/WhatsApp Image 2026-03-30 at 16.27.03.jpeg"
-  ],
   aphelandra: [
     "plantas/plantas de interior/aphelandra/IMG_20260330_152313.jpg",
     "plantas/plantas de interior/aphelandra/IMG_20260330_152317.jpg"
@@ -892,10 +918,10 @@ const interiorImageOverrides = {
     "plantas/plantas de interior/strelizia reginae/IMG_20260330_152145.jpg"
   ],
   "violeta de los alpes": [
-    "plantas/plantas de interior/violeta de los alpes/violeta de los alpes (2).jpeg",
-    "plantas/plantas de interior/violeta de los alpes/violeta de los alpes(7000).jpeg",
-    "plantas/plantas de interior/violeta de los alpes/violeta de los alpes(7000)2.jpeg",
-    "plantas/plantas de interior/violeta de los alpes/violeta de los alpes.jpeg"
+    "plantas/plantas de exterior/violeta de los alpes/violeta de los alpes (2).jpeg",
+    "plantas/plantas de exterior/violeta de los alpes/violeta de los alpes(7000).jpeg",
+    "plantas/plantas de exterior/violeta de los alpes/violeta de los alpes(7000)2.jpeg",
+    "plantas/plantas de exterior/violeta de los alpes/violeta de los alpes.jpeg"
   ]
 };
 
@@ -914,6 +940,9 @@ if (bignonia) {
 
 const copetito = products.find((product) => product.nombre === "Copetito");
 if (copetito) {
+  copetito.precio = 4000;
+  copetito.precioTexto = "3 x $4000";
+  copetito.tamanos = ["Pack x3"];
   copetito.colores = [
     { nombre: "Amarillo", hex: "#e4be4f" },
     { nombre: "Naranja", hex: "#d97d48" }
@@ -927,6 +956,9 @@ if (malvonDoble) {
 
 const petunia = products.find((product) => product.nombre === "Petunia");
 if (petunia) {
+  petunia.precio = 4000;
+  petunia.precioTexto = "3 x $4000";
+  petunia.tamanos = ["Pack x3"];
   petunia.colores = [
     { nombre: "Violeta", hex: "#8b68ba" },
     { nombre: "Rosa", hex: "#d8889b" },
@@ -937,6 +969,13 @@ if (petunia) {
 
 function folderLabel(name) {
   return String(name || "").replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+const huertaProduct = products.find((product) => product.nombre === "Huerta");
+if (huertaProduct) {
+  huertaProduct.precio = 3500;
+  huertaProduct.precioTexto = "20 x $3500";
+  huertaProduct.tamanos = ["20 plantines"];
 }
 
 function getCategoryLabel(category) {
@@ -1066,7 +1105,7 @@ function buildPriceMarkup(product) {
 
   return `
     <div class="product-price">
-      <strong class="product-price__current">${formatPrice(product.precio)}</strong>
+      <strong class="product-price__current">${getDisplayPrice(product)}</strong>
     </div>`;
 }
 
@@ -1321,7 +1360,7 @@ function openModal(product) {
   elements.modalPrice.innerHTML = product.agotado
     ? "Sin stock"
     : hasPrice
-      ? formatPrice(product.precio)
+      ? getDisplayPrice(product)
       : "Consultar precio";
   elements.modalMeasures.textContent = product.medidas || product.tamanos?.join(", ") || "";
   elements.measuresGroup.classList.toggle("hidden", !elements.modalMeasures.textContent);
