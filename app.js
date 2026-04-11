@@ -832,6 +832,13 @@ if (miniPensamientoProduct) {
   miniPensamientoProduct.tamanos = ["Pack x3"];
 }
 
+const aromaticasProduct = products.find((product) => product.nombre === "Aromaticas");
+if (aromaticasProduct) {
+  aromaticasProduct.precio = 3000;
+  aromaticasProduct.precioTexto = "2 x $3000";
+  aromaticasProduct.tamanos = ["Pack x2"];
+}
+
 const jazminDelCieloProduct = products.find((product) => product.nombre === "Jazmin Del Cielo");
 if (jazminDelCieloProduct) {
   jazminDelCieloProduct.precio = 8000;
