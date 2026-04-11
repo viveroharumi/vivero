@@ -12,6 +12,8 @@ const CSV_PRICE_DATA = {
   "limonero 4 estaciones": { precio: 30000 },
   "manto de virgen": { precio: 8000 },
   "ojo de poeta": { precio: 6000, agotado: true },
+  pensamiento: { precio: 4000 },
+  "mini pensamiento": { precio: 4000 },
   pensamientos: { precio: 4000 },
   rosario: { precio: 8000 },
   rudas: { precio: 1500 },
@@ -40,6 +42,7 @@ const CSV_PRICE_DATA = {
   evonimus: { precio: 5000 },
   "evonimus amarillo": { precio: 8000 },
   "jazmin de leche": { precio: 9000 },
+  "jazmin del cielo": { precio: 8000 },
   lantana: { precio: 7000 },
   pindo: { precio: 60000 },
   buxus: { precio: 40000 },
@@ -60,6 +63,7 @@ const CSV_PRICE_DATA = {
   solanum: { precio: 8000 },
   ruelia: { precio: 7000 },
   "lavanda grande": { precio: 8000 },
+  melaleuca: { precio: 8000 },
   teucrium: { precio: 7000 },
   "duranta aurea": { precio: 8000 },
   "arreglo de suculentas": { precio: 10000 },
@@ -156,8 +160,8 @@ const DATA_KEY_ALIASES = {
   philopendron: "philodendron",
   "dieffenbachia tropic": "dieffencachia tropic",
   "salvia greggii": "salvia gregi",
-  "pensamientos 2 uidades": "pensamientos",
-  "pensamientos 2 unidades": "pensamientos",
+  "pensamientos 2 uidades": "pensamiento",
+  "pensamientos 2 unidades": "pensamiento",
   perlitas: "perlita",
   huertas: "huerta",
   "strelizia reginae": "strelitzia reginae",
@@ -361,6 +365,10 @@ const otherProductFiles = [
 plantExteriorFiles.push(
   "plantas/plantas de exterior/arreglo de suculentas/WhatsApp Image 2026-04-08 at 16.33.58.jpeg",
   "plantas/plantas de exterior/arreglo de suculentas/WhatsApp Image 2026-04-08 at 16.33.59.jpeg",
+  "plantas/plantas de exterior/alegria del hogar/alegria del hogar.jpg",
+  "plantas/plantas de exterior/alegria del hogar/WhatsApp Image 2026-04-11 at 12.21.58.jpeg",
+  "plantas/plantas de exterior/alegria del hogar/WhatsApp Image 2026-04-11 at 12.21.58 (2).jpeg",
+  "plantas/plantas de exterior/alegria del hogar/WhatsApp Image 2026-04-11 at 12.21.58 (3).jpeg",
   "plantas/plantas de exterior/bignonia naranja/WhatsApp Image 2026-04-08 at 17.13.17.jpeg",
   "plantas/plantas de exterior/bignonia naranja/WhatsApp Image 2026-04-08 at 17.13.18.jpeg",
   "plantas/plantas de exterior/budleja/WhatsApp Image 2026-04-08 at 16.55.12.jpeg",
@@ -380,23 +388,37 @@ plantExteriorFiles.push(
   "plantas/plantas de exterior/evonimus/WhatsApp Image 2026-04-08 at 16.21.25.jpeg",
   "plantas/plantas de exterior/evonimus/WhatsApp Image 2026-04-08 at 16.26.07.jpeg",
   "plantas/plantas de exterior/jazmin de leche/WhatsApp Image 2026-04-08 at 16.24.17.jpeg",
+  "plantas/plantas de exterior/jazmin del cielo/WhatsApp Image 2026-04-11 at 12.22.00 (1).jpeg",
   "plantas/plantas de exterior/laurel de jardin por cerco/WhatsApp Image 2026-04-08 at 16.46.50.jpeg",
   "plantas/plantas de exterior/lavanda grande/WhatsApp Image 2026-04-08 at 16.31.12.jpeg",
   "plantas/plantas de exterior/melaleuca/WhatsApp Image 2026-04-08 at 16.48.48.jpeg",
   "plantas/plantas de exterior/melaleuca/WhatsApp Image 2026-04-08 at 16.48.49.jpeg",
+  "plantas/plantas de exterior/mini pensamiento/WhatsApp Image 2026-04-11 at 12.21.57 (2).jpeg",
+  "plantas/plantas de exterior/mini pensamiento/WhatsApp Image 2026-04-11 at 12.21.57 (3).jpeg",
+  "plantas/plantas de exterior/mini pensamiento/WhatsApp Image 2026-04-11 at 12.21.58 (1).jpeg",
   "plantas/plantas de exterior/penisetum/WhatsApp Image 2026-04-08 at 16.44.46.jpeg",
   "plantas/plantas de exterior/penisetum/WhatsApp Image 2026-04-08 at 16.45.15.jpeg",
   "plantas/plantas de exterior/penisetum/WhatsApp Image 2026-04-08 at 7.jpeg",
+  "plantas/plantas de exterior/pensamiento/WhatsApp Image 2026-04-11 at 12.21.56 (2).jpeg",
+  "plantas/plantas de exterior/pensamiento/WhatsApp Image 2026-04-11 at 12.21.56 (3).jpeg",
+  "plantas/plantas de exterior/pensamiento/WhatsApp Image 2026-04-11 at 12.21.57 (1).jpeg",
+  "plantas/plantas de exterior/pensamiento/WhatsApp Image 2026-04-11 at 12.21.57.jpeg",
   "plantas/plantas de exterior/ruelia/WhatsApp Image 2026-04-08 at 16.30.51.jpeg",
   "plantas/plantas de exterior/ruelia/WhatsApp Image 2026-04-08 at 16.30.52.jpeg",
   "plantas/plantas de exterior/salvia gregi/WhatsApp Image 2026-04-08 at 16.56.08.jpeg",
   "plantas/plantas de exterior/salvia gregi/WhatsApp Image 2026-04-08 at 16.56.081.jpeg",
   "plantas/plantas de exterior/solanum/WhatsApp Image 2026-04-08 at 16.28.30.jpeg",
   "plantas/plantas de exterior/solanum/WhatsApp Image 2026-04-08 at 16.28.39.jpeg",
+  "plantas/plantas de exterior/solanum/WhatsApp Image 2026-04-11 at 12.21.59 (1).jpeg",
+  "plantas/plantas de exterior/solanum/WhatsApp Image 2026-04-11 at 12.21.59 (2).jpeg",
+  "plantas/plantas de exterior/solanum/WhatsApp Image 2026-04-11 at 12.21.59 (3).jpeg",
   "plantas/plantas de exterior/tecoma/WhatsApp Image 2026-04-08 at 16.19.23.jpeg",
   "plantas/plantas de exterior/tecoma/WhatsApp Image 2026-04-08 at 16.19.24.jpeg",
   "plantas/plantas de exterior/teucrium/WhatsApp Image 2026-04-08 at 16.32.32.jpeg",
-  "plantas/plantas de exterior/teucrium/WhatsApp Image 2026-04-08 at 16.32.35.jpeg"
+  "plantas/plantas de exterior/teucrium/WhatsApp Image 2026-04-08 at 16.32.35.jpeg",
+  "plantas/plantas de exterior/violeta de los alpes/WhatsApp Image 2026-04-11 at 12.21.55.jpeg",
+  "plantas/plantas de exterior/violeta de los alpes/WhatsApp Image 2026-04-11 at 12.21.55 (1).jpeg",
+  "plantas/plantas de exterior/violeta de los alpes/WhatsApp Image 2026-04-11 at 12.21.55 (2).jpeg"
 );
 
 plantInteriorFiles.push(
@@ -438,11 +460,13 @@ function getPlantFlowerColors(plantName) {
   }
   if (normalized === "geranios") return [{ nombre: "Rojo", hex: "#b93d3d" }, { nombre: "Rosa", hex: "#dc8da7" }, { nombre: "Blanco", hex: "#f4f1e8" }];
   if (normalized === "rosa china") return [{ nombre: "Blanco", hex: "#f4efe7" }, { nombre: "Rosa", hex: "#d8889b" }, { nombre: "Rojo", hex: "#b63d44" }, { nombre: "Amarillo", hex: "#e4be4f" }];
-  if (normalized === "violeta de los alpes") return [{ nombre: "Violeta", hex: "#8b68ba" }, { nombre: "Rosa", hex: "#d18aa6" }, { nombre: "Blanco", hex: "#f4f0ea" }];
+  if (normalized === "violeta de los alpes") return [{ nombre: "Fucsia", hex: "#c2447d" }, { nombre: "Rosa", hex: "#d18aa6" }, { nombre: "Rojo", hex: "#b84a59" }];
   if (normalized === "manto de virgen") return [{ nombre: "Blanco", hex: "#f5f2ea" }, { nombre: "Lila suave", hex: "#c7b7df" }];
   if (normalized === "gazana" || normalized === "gazana gigante") return [{ nombre: "Amarillo", hex: "#e4b93d" }, { nombre: "Naranja", hex: "#de8b3e" }];
-  if (["alegria del hogar", "begonia", "pensamientos"].includes(normalized)) return [{ nombre: "Rosa", hex: "#d68398" }, { nombre: "Rojo", hex: "#b84a59" }, { nombre: "Blanco", hex: "#f3efe7" }];
+  if (["alegria del hogar", "begonia", "pensamientos", "pensamiento"].includes(normalized)) return [{ nombre: "Rosa", hex: "#d68398" }, { nombre: "Rojo", hex: "#b84a59" }, { nombre: "Blanco", hex: "#f3efe7" }];
+  if (normalized === "mini pensamiento") return [{ nombre: "Amarillo", hex: "#e4be4f" }, { nombre: "Violeta", hex: "#8b68ba" }, { nombre: "Blanco", hex: "#f3efe7" }];
   if (["petunia", "copetito", "malvon doble"].includes(normalized)) return [{ nombre: "Violeta", hex: "#8b68ba" }, { nombre: "Naranja", hex: "#d97d48" }, { nombre: "Amarillo", hex: "#e4be4f" }];
+  if (normalized === "jazmin del cielo") return [{ nombre: "Celeste", hex: "#8aa9e6" }];
   if (["rayito de sol", "lantana"].includes(normalized)) return [{ nombre: "Amarillo", hex: "#e4be4f" }, { nombre: "Naranja", hex: "#d97d48" }];
   if (normalized === "salvia de jardin") return [{ nombre: "Rojo", hex: "#bb4b4b" }, { nombre: "Fucsia", hex: "#c2447d" }];
   if (normalized === "bignonia naranja") return [{ nombre: "Naranja", hex: "#d97d48" }];
@@ -538,7 +562,9 @@ function getPlantDescription(plantName) {
   if (normalized === "ojo de poeta") return "Trepadora florifera de aspecto delicado, muy linda para tutores y cercos.";
   if (normalized === "palo de agua grande" || normalized === "palo de agua mediano") return "De buen porte y presencia, ideal para interiores con luz filtrada.";
   if (normalized === "penisetum") return "Graminea ornamental de movimiento suave, ideal para canteros y jardines de bajo mantenimiento.";
-  if (normalized === "pensamientos") return "Flor compacta y colorida para macetas de temporada, muy vistosa en exterior fresco.";
+  if (normalized === "pensamientos" || normalized === "pensamiento") return "Flor compacta y colorida para macetas de temporada, muy vistosa en exterior fresco.";
+  if (normalized === "mini pensamiento") return "Version pequena y rendidora, ideal para sumar color de temporada en macetas y bordes.";
+  if (normalized === "jazmin del cielo") return "Trepadora suave y ornamental, muy linda para rejas, cercos y rincones con buena luz.";
   if (normalized === "petunia") return "Flor de temporada ideal para balcones y macetas con mucho color.";
   if (normalized === "philodendron") return "Follaje tropical y noble, muy decorativo para interiores con luz natural estable.";
   if (normalized === "pindo") return "Palmera de gran porte para jardines y frentes con espacio.";
@@ -778,9 +804,43 @@ if (cactusProduct) {
   cactusProduct.imagen = cactusProduct.imagenes[0];
 }
 
+const gazaniaProduct = products.find((product) => product.nombre === "Gazania");
+if (gazaniaProduct) {
+  gazaniaProduct.precio = 4000;
+  gazaniaProduct.precioTexto = "3 x $4000";
+  gazaniaProduct.tamanos = ["Pack x3"];
+}
+
+const rayitoDeSolProduct = products.find((product) => product.nombre === "Rayito De Sol");
+if (rayitoDeSolProduct) {
+  rayitoDeSolProduct.precio = 4000;
+  rayitoDeSolProduct.precioTexto = "3 x $4000";
+  rayitoDeSolProduct.tamanos = ["Pack x3"];
+}
+
+const pensamientoProduct = products.find((product) => product.nombre === "Pensamiento");
+if (pensamientoProduct) {
+  pensamientoProduct.precio = 4000;
+  pensamientoProduct.precioTexto = "3 x $4000";
+  pensamientoProduct.tamanos = ["Pack x3"];
+}
+
+const miniPensamientoProduct = products.find((product) => product.nombre === "Mini Pensamiento");
+if (miniPensamientoProduct) {
+  miniPensamientoProduct.precio = 4000;
+  miniPensamientoProduct.precioTexto = "3 x $4000";
+  miniPensamientoProduct.tamanos = ["Pack x3"];
+}
+
+const jazminDelCieloProduct = products.find((product) => product.nombre === "Jazmin Del Cielo");
+if (jazminDelCieloProduct) {
+  jazminDelCieloProduct.precio = 8000;
+}
+
 const melaleuca = products.find((product) => product.nombre === "Melaleuca");
 if (melaleuca) {
-  melaleuca.precio = null;
+  melaleuca.precio = 8000;
+  melaleuca.agotado = false;
 }
 
 const interiorImageOverrides = {
@@ -918,10 +978,9 @@ const interiorImageOverrides = {
     "plantas/plantas de interior/strelizia reginae/IMG_20260330_152145.jpg"
   ],
   "violeta de los alpes": [
-    "plantas/plantas de exterior/violeta de los alpes/violeta de los alpes (2).jpeg",
-    "plantas/plantas de exterior/violeta de los alpes/violeta de los alpes(7000).jpeg",
-    "plantas/plantas de exterior/violeta de los alpes/violeta de los alpes(7000)2.jpeg",
-    "plantas/plantas de exterior/violeta de los alpes/violeta de los alpes.jpeg"
+    "plantas/plantas de exterior/violeta de los alpes/WhatsApp Image 2026-04-11 at 12.21.55.jpeg",
+    "plantas/plantas de exterior/violeta de los alpes/WhatsApp Image 2026-04-11 at 12.21.55 (1).jpeg",
+    "plantas/plantas de exterior/violeta de los alpes/WhatsApp Image 2026-04-11 at 12.21.55 (2).jpeg"
   ]
 };
 
