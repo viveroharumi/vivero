@@ -12,9 +12,9 @@ const CSV_PRICE_DATA = {
   "limonero 4 estaciones": { precio: 30000 },
   "manto de virgen": { precio: 8000 },
   "ojo de poeta": { precio: 6000, agotado: true },
-  pensamiento: { precio: 4000 },
-  "mini pensamiento": { precio: 4000 },
-  pensamientos: { precio: 4000 },
+  pensamiento: { precio: 3000 },
+  "mini pensamiento": { precio: 3000 },
+  pensamientos: { precio: 3000 },
   rosario: { precio: 8000 },
   rudas: { precio: 1500 },
   dolar: { precio: 8000 },
@@ -22,7 +22,7 @@ const CSV_PRICE_DATA = {
   "costilla de adan": { precio: 18000 },
   "palo de agua mediano": { precio: 15000 },
   "trepadores santa rita": { precio: 8000 },
-  geranios: { precio: 4000, agotado: true },
+  geranios: { precio: 4000 },
   "violeta de los alpes": { precio: 10000 },
   suculentas: { precio: 2000 },
   cactus: { precio: 4000 },
@@ -48,11 +48,11 @@ const CSV_PRICE_DATA = {
   buxus: { precio: 40000 },
   "laurel de jardin": { precio: 7000 },
   "salvia de jardin": { precio: 7000 },
-  "alegria del hogar": { precio: 4000 },
-  "rayito de sol": { precio: 4000 },
-  petunia: { precio: 4000 },
-  gazana: { precio: 4000 },
-  copetito: { precio: 4000 },
+  "alegria del hogar": { precio: 3000 },
+  "rayito de sol": { precio: 3000 },
+  petunia: { precio: 3000 },
+  gazana: { precio: 3000 },
+  copetito: { precio: 3000 },
   bignonia: { precio: 8000 },
   "bignonia naranja": { precio: 7000 },
   "malvon doble": { precio: 4000 },
@@ -87,6 +87,7 @@ const CSV_PRICE_DATA = {
   philodendron: { precio: 30000 },
   budleja: { precio: 7000 },
   "salvia gregi": { precio: 7000 },
+  lambertiana: { precio: 7000 },
   "tierra abonada": { precio: 5000 },
   humus: { precio: 7000 },
   turba: { precio: 2000 },
@@ -390,9 +391,11 @@ plantExteriorFiles.push(
   "plantas/plantas de exterior/jazmin de leche/WhatsApp Image 2026-04-08 at 16.24.17.jpeg",
   "plantas/plantas de exterior/jazmin del cielo/WhatsApp Image 2026-04-11 at 12.22.00 (1).jpeg",
   "plantas/plantas de exterior/laurel de jardin por cerco/WhatsApp Image 2026-04-08 at 16.46.50.jpeg",
+  "plantas/plantas de exterior/lambertiana/WhatsApp Image 2026-05-26 at 7.55.45 PM.jpeg",
   "plantas/plantas de exterior/lavanda grande/WhatsApp Image 2026-04-08 at 16.31.12.jpeg",
   "plantas/plantas de exterior/melaleuca/WhatsApp Image 2026-04-08 at 16.48.48.jpeg",
   "plantas/plantas de exterior/melaleuca/WhatsApp Image 2026-04-08 at 16.48.49.jpeg",
+  "plantas/plantas de exterior/melaleuca/WhatsApp Image 2026-05-26 at 7.55.45 PM (1).jpeg",
   "plantas/plantas de exterior/mini pensamiento/WhatsApp Image 2026-04-11 at 12.21.57 (2).jpeg",
   "plantas/plantas de exterior/mini pensamiento/WhatsApp Image 2026-04-11 at 12.21.57 (3).jpeg",
   "plantas/plantas de exterior/mini pensamiento/WhatsApp Image 2026-04-11 at 12.21.58 (1).jpeg",
@@ -455,7 +458,7 @@ plantInteriorFiles.push(
 
 function getPlantFlowerColors(plantName) {
   const normalized = resolveDataKey(plantName);
-  if (["agapantus", "aromaticas", "cola de burro", "colgantes", "rosario", "rudas", "limonero 4 estaciones", "huerta", "gomero", "ficus", "marginata", "potus n14", "strelitzia reginae", "palo de agua grande", "palo de agua mediano", "sansevieria", "cactus", "suculentas"].includes(normalized)) {
+  if (["agapantus", "aromaticas", "cola de burro", "colgantes", "rosario", "rudas", "limonero 4 estaciones", "huerta", "gomero", "ficus", "marginata", "potus n14", "strelitzia reginae", "palo de agua grande", "palo de agua mediano", "sansevieria", "cactus", "suculentas", "lambertiana"].includes(normalized)) {
     return [];
   }
   if (normalized === "geranios") return [{ nombre: "Rojo", hex: "#b93d3d" }, { nombre: "Rosa", hex: "#dc8da7" }, { nombre: "Blanco", hex: "#f4f1e8" }];
@@ -552,6 +555,7 @@ function getPlantDescription(plantName) {
   if (normalized === "laurel de jardin") return "Arbusto resistente para patio o jardin, con una presencia muy ordenada.";
   if (normalized === "laurel de jardin por cerco") return "Ideal para formar cercos verdes y prolijos, con buena estructura y crecimiento parejo.";
   if (normalized === "lantana") return "Florifera y muy rendidora al sol, ideal para macetas y canteros exteriores.";
+  if (normalized === "lambertiana") return "Conifera ornamental de exterior, ideal para sumar estructura, verde permanente y porte al jardin.";
   if (normalized === "lavanda grande") return "Aromatica ornamental de follaje perfumado, muy linda para canteros, bordes y sol pleno.";
   if (normalized === "mala madre") return "Muy facil de cuidar, ideal para interiores luminosos y para sumar verde sin mucho mantenimiento.";
   if (normalized === "limonero 4 estaciones") return "Frutal muy buscado para patios y jardines con sol, perfuma y decora al mismo tiempo.";
@@ -668,9 +672,10 @@ if (alegriaProducts.length) {
 
   alegriaPrincipal.product.categoria = "exterior";
   alegriaPrincipal.product.seccionPlanta = "exterior";
-  alegriaPrincipal.product.precio = 4000;
-  alegriaPrincipal.product.precioTexto = "3 x $4000";
-  alegriaPrincipal.product.tamanos = ["Pack x3"];
+  alegriaPrincipal.product.precio = 3000;
+  alegriaPrincipal.product.precioTexto = "2 x $3000";
+  alegriaPrincipal.product.tamanos = ["Pack x2"];
+  alegriaPrincipal.product.agotado = false;
   alegriaPrincipal.product.imagenes = alegriaImages;
   alegriaPrincipal.product.imagen = alegriaImages[0];
   alegriaPrincipal.product.colores = [
@@ -806,30 +811,30 @@ if (cactusProduct) {
 
 const gazaniaProduct = products.find((product) => product.nombre === "Gazania");
 if (gazaniaProduct) {
-  gazaniaProduct.precio = 4000;
-  gazaniaProduct.precioTexto = "3 x $4000";
-  gazaniaProduct.tamanos = ["Pack x3"];
+  gazaniaProduct.precio = 3000;
+  gazaniaProduct.precioTexto = "2 x $3000";
+  gazaniaProduct.tamanos = ["Pack x2"];
 }
 
 const rayitoDeSolProduct = products.find((product) => product.nombre === "Rayito De Sol");
 if (rayitoDeSolProduct) {
-  rayitoDeSolProduct.precio = 4000;
-  rayitoDeSolProduct.precioTexto = "3 x $4000";
-  rayitoDeSolProduct.tamanos = ["Pack x3"];
+  rayitoDeSolProduct.precio = 3000;
+  rayitoDeSolProduct.precioTexto = "2 x $3000";
+  rayitoDeSolProduct.tamanos = ["Pack x2"];
 }
 
 const pensamientoProduct = products.find((product) => product.nombre === "Pensamiento");
 if (pensamientoProduct) {
-  pensamientoProduct.precio = 4000;
-  pensamientoProduct.precioTexto = "3 x $4000";
-  pensamientoProduct.tamanos = ["Pack x3"];
+  pensamientoProduct.precio = 3000;
+  pensamientoProduct.precioTexto = "2 x $3000";
+  pensamientoProduct.tamanos = ["Pack x2"];
 }
 
 const miniPensamientoProduct = products.find((product) => product.nombre === "Mini Pensamiento");
 if (miniPensamientoProduct) {
-  miniPensamientoProduct.precio = 4000;
-  miniPensamientoProduct.precioTexto = "3 x $4000";
-  miniPensamientoProduct.tamanos = ["Pack x3"];
+  miniPensamientoProduct.precio = 3000;
+  miniPensamientoProduct.precioTexto = "2 x $3000";
+  miniPensamientoProduct.tamanos = ["Pack x2"];
 }
 
 const aromaticasProduct = products.find((product) => product.nombre === "Aromaticas");
@@ -1006,9 +1011,9 @@ if (bignonia) {
 
 const copetito = products.find((product) => product.nombre === "Copetito");
 if (copetito) {
-  copetito.precio = 4000;
-  copetito.precioTexto = "3 x $4000";
-  copetito.tamanos = ["Pack x3"];
+  copetito.precio = 3000;
+  copetito.precioTexto = "2 x $3000";
+  copetito.tamanos = ["Pack x2"];
   copetito.colores = [
     { nombre: "Amarillo", hex: "#e4be4f" },
     { nombre: "Naranja", hex: "#d97d48" }
@@ -1022,9 +1027,9 @@ if (malvonDoble) {
 
 const petunia = products.find((product) => product.nombre === "Petunia");
 if (petunia) {
-  petunia.precio = 4000;
-  petunia.precioTexto = "3 x $4000";
-  petunia.tamanos = ["Pack x3"];
+  petunia.precio = 3000;
+  petunia.precioTexto = "2 x $3000";
+  petunia.tamanos = ["Pack x2"];
   petunia.colores = [
     { nombre: "Violeta", hex: "#8b68ba" },
     { nombre: "Rosa", hex: "#d8889b" },
@@ -1039,9 +1044,9 @@ function folderLabel(name) {
 
 const huertaProduct = products.find((product) => product.nombre === "Huerta");
 if (huertaProduct) {
-  huertaProduct.precio = 3500;
-  huertaProduct.precioTexto = "20 x $3500";
-  huertaProduct.tamanos = ["20 plantines"];
+  huertaProduct.precio = 3000;
+  huertaProduct.precioTexto = "2 x $3000";
+  huertaProduct.tamanos = ["Pack x2"];
 }
 
 function getCategoryLabel(category) {
